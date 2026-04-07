@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_DB=babyviip_db
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=pass_seguro_123
+
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_NAME=babyviip_db
+      - DATABASE_USER=admin
+      - DATABASE_PASSWORD=pass_seguro_123
+      - DATABASE_HOST=db
+      - DATABASE_PORT=5432
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
