@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh
 set -e
 
 DB_HOST="${DATABASE_HOST:-db}"

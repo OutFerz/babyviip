@@ -19,7 +19,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    command: /app/entrypoint.sh
+    command: ["sh", "-c", "sed -i 's/\\r$//' /app/entrypoint.sh && sh /app/entrypoint.sh"]
     volumes:
       - .:/app
     ports:
