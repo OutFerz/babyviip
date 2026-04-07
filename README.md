@@ -78,9 +78,3 @@ http://localhost:8000
 ```bash
 docker-compose down
 ```
-
----
-
-## 👨‍💻 Autor
-
-Desarrollado por [OutFerz](https://github.com/OutFerz)
