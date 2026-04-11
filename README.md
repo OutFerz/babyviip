@@ -63,7 +63,7 @@ Este proyecto utiliza Docker para levantar un entorno completo con Python y Post
 3. Levantar los contenedores
 
    ```bash
-   docker compose up -d --build
+   docker compose up -d
    ```
 
 4. Preparar la Base de Datos
@@ -80,3 +80,5 @@ Este proyecto utiliza Docker para levantar un entorno completo con Python y Post
    # Aseguramos de que está ON
    docker compose ps
    ```
+
+   y finalmente conectarnos a http://IP_ADDRESS:8000
