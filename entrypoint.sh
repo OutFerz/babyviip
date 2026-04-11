@@ -1,17 +1,16 @@
 #!/bin/sh
 set -e
 
-DB_HOST="${DATABASE_HOST:-db}"
-DB_PORT="${DATABASE_PORT:-5432}"
-DB_USER="${DATABASE_USER:-admin}"
-DB_NAME="${DATABASE_NAME:-babyviip_db}"
+echo "Esperando a Postgres en ${DATABASE_HOST:-db}..."
 
-echo "Waiting for Postgres at ${DB_HOST}:${DB_PORT}..."
-until pg_isready -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USER" -d "$DB_NAME" >/dev/null 2>&1; do
+# Usamos python para verificar la conexión en lugar de pg_isready
+until python -c "import psycopg2, os; psycopg2.connect(dbname=os.getenv('DATABASE_NAME'), user=os.getenv('DATABASE_USER'), password=os.getenv('DATABASE_PASSWORD'), host=os.getenv('DATABASE_HOST', 'db'), port=os.getenv('DATABASE_PORT', '5432'))" > /dev/null 2>&1; do
+  echo "Postgres no está listo - esperando..."
   sleep 1
 done
 
+echo "Base de datos lista. Aplicando migraciones..."
 python manage.py migrate --noinput
 
+echo "Iniciando servidor..."
 exec python manage.py runserver 0.0.0.0:8000
-
