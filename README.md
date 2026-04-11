@@ -4,77 +4,79 @@ Este proyecto utiliza Docker para levantar un entorno completo con Python y Post
 
 ---
 
-## 📦 Requisitos
+1. Acceso externo (Azure Networking)
 
-Antes de comenzar, asegúrate de tener instalado:
+   Ve al Portal de Azure.
 
-### 1. Subsistema de Linux (WSL)
-```bash
-wsl --install
-```
+   Entra en tu Virtual Machine -> Networking (o Redes).
 
-### 2. Git
-```bash
-winget install --id Git.Git -e --source winget
-```
+   Haz clic en Add inbound port rule (Agregar regla de puerto de entrada).
 
-### 3. Docker Desktop
-```bash
-winget install --id Docker.DockerDesktop -e --source winget
-```
+   Configura:
 
----
+   - `Destination port ranges`: 8000
+   - `Protocol`: TCP
+   - `Name`: Django_Port
 
-## 📥 Clonar el repositorio
+   Dale a Add.
 
-```bash
-cd C:\Users\tu_usuario\Desktop
-git clone https://github.com/OutFerz/babyviip.git
-cd babyviip
-```
+   Nos conectamos a la VM
 
----
+   `ssh -i ~/Documents/pass.pem USER@IP_ADDRESS`
 
-## ⚙️ Configuración
+   Lo primero que querrás hacer es preparar el entorno para Docker:
 
-Crea un archivo `.env` en la raíz del proyecto con el siguiente contenido:
+   - Instala Docker y Compose:
 
-```env
-DATABASE_NAME=XXXX
-DATABASE_USER=XXXX
-DATABASE_PASSWORD=XXXX
-DATABASE_HOST=XXXX
-DATABASE_PORT=XXXX
-```
+     ```bash
+     sudo apt update
+     sudo apt install docker-compose-v2 -y
+     ```
 
----
+   - Dale permisos a tu usuario:
 
-## 🐳 Levantar el proyecto con Docker
+     ```bash
+     sudo usermod -aG docker $USER
+     ```
 
-```bash
-docker-compose up -d --build
-```
+     (Después de esto, cierra la sesión con `exit` y vuelve a entrar para que el cambio surta efecto).
 
-Esto descargará las imágenes necesarias (Python y PostgreSQL) y levantará los contenedores.
+2. Clonar el proyecto y configurar
 
----
+   Ahora que estás dentro con los permisos frescos, vamos por el código.
 
-## 🌐 Acceso a la aplicación
+   ```bash
+   # Clona tu repositorio
+   git clone https://github.com/OutFerz/babyviip.git
+   cd babyviip
 
-Una vez iniciado, la aplicación debería estar disponible en:
+   # Crea el archivo de variables de entorno
+   nano .env
 
-```
-http://localhost:8000
-```
+   DATABASE_NAME=XXXXX
+   DATABASE_USER=XXXXX
+   DATABASE_PASSWORD=XXXXX
+   DATABASE_HOST=XXXXX
+   DATABASE_PORT=XXXXX
+   ```
 
----
+3. Levantar los contenedores
 
-## 📝 Notas
+   ```bash
+   docker compose up -d --build
+   ```
 
-- Asegúrate de que Docker Desktop esté corriendo antes de ejecutar los comandos.
-- Si tienes problemas con WSL, reinicia tu equipo después de instalarlo.
-- Puedes detener los contenedores con:
+4. Preparar la Base de Datos
 
-```bash
-docker-compose down
-```
+   Una vez que los contenedores estén arriba (puedes verificar con `docker ps`), ejecuta las migraciones iniciales de Django:
+
+   ```bash
+   # Aplicar migraciones
+   docker compose exec web python manage.py migrate
+
+   # Crear tu usuario administrador
+   docker compose exec web python manage.py createsuperuser
+
+   # Aseguramos de que está ON
+   docker compose ps
+   ```
