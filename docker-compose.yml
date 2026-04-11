@@ -19,7 +19,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    command: /app/entrypoint.sh
+    command: sh /app/entrypoint.sh
     volumes:
       - .:/app
     ports:
