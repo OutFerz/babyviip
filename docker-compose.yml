@@ -10,7 +10,7 @@ services:
       - POSTGRES_USER=${DATABASE_USER}
       - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      test: [ "CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB" ]
       interval: 3s
       timeout: 3s
       retries: 20
@@ -19,7 +19,7 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    command: ["sh", "-c", "sed -i 's/\\r$//' /app/entrypoint.sh && sh /app/entrypoint.sh"]
+    command: /app/entrypoint.sh
     volumes:
       - .:/app
     ports:
