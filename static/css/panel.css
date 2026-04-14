@@ -1,0 +1,540 @@
+/*
+ * panel.css — Panel de gestión de catálogo (Babyviip).
+ * Alineado visualmente con home/catalogo: celeste pastel, acento rosa, bordes suaves.
+ * Plantillas: templates/panel/*.html · JS: static/js/panel.js
+ */
+
+:root {
+    --panel-bg: #e8f4fc;
+    --panel-surface: #ffffff;
+    --panel-accent: #ec407a;
+    --panel-accent-dark: #c2185b;
+    --panel-blue: #0277bd;
+    --panel-blue-soft: #b3e5fc;
+    --panel-border-dashed: #f8bbd0;
+    --panel-shadow: 0 8px 32px rgba(2, 119, 189, 0.08);
+    --panel-radius: 18px;
+}
+
+.panel-body {
+    min-height: 100vh;
+    background: linear-gradient(165deg, var(--panel-bg) 0%, #f0f7ff 45%, #fce4ec22 100%);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #37474f;
+}
+
+/* —— Cabecera —— */
+.panel-nav {
+    background: linear-gradient(90deg, #ffffff 0%, #e3f2fd 100%);
+    border-bottom: 3px dashed var(--panel-border-dashed) !important;
+    box-shadow: var(--panel-shadow);
+}
+
+.panel-nav .container-fluid {
+    max-width: 1200px;
+}
+
+/* —— Navegación con scroll horizontal (flechas ← →) —— */
+.panel-nav-scroller-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    min-width: 0;
+    flex: 1 1 auto;
+    /* Limitar lo visible aunque la pantalla sea ancha */
+    /* Mostrar más pestañas (mín ~6) antes de scrollear */
+    max-width: 760px;
+}
+
+.panel-nav-scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+    min-width: 0;
+    padding: 0.05rem 0.1rem;
+    border-radius: 14px;
+    width: 100%;
+}
+
+.panel-nav-scroller::-webkit-scrollbar {
+    height: 8px;
+}
+.panel-nav-scroller::-webkit-scrollbar-track {
+    background: rgba(2, 119, 189, 0.08);
+    border-radius: 999px;
+}
+.panel-nav-scroller::-webkit-scrollbar-thumb {
+    background: rgba(236, 64, 122, 0.45);
+    border-radius: 999px;
+}
+
+.panel-nav-scroll-btn {
+    border: 1px solid rgba(2, 119, 189, 0.18);
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--panel-blue);
+    border-radius: 999px;
+    width: 28px;
+    height: 28px;
+    line-height: 26px;
+    font-weight: 900;
+    font-size: 18px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+    position: relative;
+    z-index: 3;
+    pointer-events: auto;
+}
+.panel-nav-scroll-btn:hover {
+    background: rgba(227, 242, 253, 0.75);
+}
+.panel-nav-scroll-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+.panel-nav-scroll-btn.is-disabled {
+    opacity: 0.45;
+}
+
+/* En pantallas pequeñas, ocupar más ancho disponible */
+@media (max-width: 768px) {
+    .panel-nav-scroller-wrap {
+        max-width: 100%;
+    }
+}
+
+/* Compactar links del nav para que no se vean “gordos” */
+.panel-nav .nav-link {
+    padding: 0.28rem 0.75rem !important;
+    font-size: 0.92rem;
+}
+
+.panel-nav .badge {
+    font-size: 0.72rem;
+    vertical-align: middle;
+}
+
+.panel-brand {
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    color: var(--panel-accent) !important;
+}
+
+.panel-nav .nav-link {
+    color: var(--panel-blue) !important;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.panel-nav .nav-link:hover {
+    background: rgba(236, 64, 122, 0.12);
+    color: var(--panel-accent-dark) !important;
+}
+
+.panel-nav .nav-link--active {
+    background: var(--panel-accent);
+    color: #fff !important;
+}
+
+.panel-nav .btn-outline-secondary {
+    border-color: var(--panel-blue);
+    color: var(--panel-blue);
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.panel-nav .btn-outline-secondary:hover {
+    background: var(--panel-blue);
+    color: #fff;
+}
+
+.panel-main-inner {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* —— Encabezado de página —— */
+.panel-page-header {
+    background: var(--panel-surface);
+    border-radius: var(--panel-radius);
+    border: 1px solid rgba(2, 119, 189, 0.12);
+    box-shadow: var(--panel-shadow);
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid var(--panel-accent);
+}
+
+.panel-page-header h1 {
+    color: var(--panel-accent);
+    font-weight: 800;
+    font-size: 1.65rem;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+}
+
+.panel-page-lead {
+    color: #546e7a;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    max-width: 52rem;
+    margin-bottom: 0;
+}
+
+.panel-badge-cloud {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--panel-blue);
+    background: var(--panel-blue-soft);
+    padding: 0.25rem 0.65rem;
+    border-radius: 50px;
+    margin-bottom: 0.75rem;
+}
+
+/* —— KPIs / métricas —— */
+.panel-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.panel-stat-card {
+    background: var(--panel-surface);
+    border-radius: 14px;
+    padding: 1rem 1.15rem;
+    border: 1px solid rgba(248, 187, 208, 0.6);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+    text-align: center;
+}
+
+.panel-stat-card__value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--panel-accent);
+    line-height: 1.2;
+}
+
+.panel-stat-card__label {
+    font-size: 0.8rem;
+    color: #78909c;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+.panel-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+/* —— Botones Babyviip —— */
+.panel-btn-primary {
+    background: linear-gradient(180deg, var(--panel-accent) 0%, var(--panel-accent-dark) 100%);
+    border: none;
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 50px;
+    padding: 0.55rem 1.35rem;
+    box-shadow: 0 4px 14px rgba(236, 64, 122, 0.35);
+    transition: transform 0.15s, box-shadow 0.2s;
+}
+
+.panel-btn-primary:hover {
+    color: #fff !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(236, 64, 122, 0.45);
+}
+
+.panel-btn-ghost {
+    border-radius: 50px;
+    font-weight: 600;
+    border: 2px solid var(--panel-blue);
+    color: var(--panel-blue);
+    background: #fff;
+}
+
+.panel-btn-ghost:hover {
+    background: var(--panel-blue);
+    color: #fff;
+}
+
+/* —— Tabla —— */
+.panel-card-table {
+    background: var(--panel-surface);
+    border-radius: var(--panel-radius);
+    overflow: hidden;
+    border: 1px solid rgba(2, 119, 189, 0.1);
+    box-shadow: var(--panel-shadow);
+}
+
+.panel-table {
+    margin-bottom: 0;
+}
+
+.panel-table thead th {
+    background: linear-gradient(180deg, #e1f5fe 0%, #b3e5fc55 100%);
+    color: var(--panel-blue);
+    font-weight: 700;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    border-bottom: 2px dashed var(--panel-border-dashed);
+    padding: 0.9rem 1rem;
+}
+
+.panel-table tbody td {
+    padding: 0.85rem 1rem;
+    vertical-align: middle;
+    border-color: #eceff1;
+}
+
+.panel-table tbody tr:hover {
+    background: rgba(227, 242, 253, 0.45);
+}
+
+.panel-table .cell-name {
+    font-weight: 600;
+    color: #263238;
+}
+
+.panel-table .btn-sm {
+    border-radius: 50px;
+    font-weight: 600;
+}
+
+.panel-table .badge {
+    font-weight: 700;
+    padding: 0.4em 0.75em;
+    border-radius: 50px;
+}
+
+/* —— Pie del panel —— */
+.panel-footer-site {
+    text-align: center;
+    color: #90a4ae;
+    font-size: 0.8rem;
+    padding: 2rem 1rem 1.5rem;
+    margin-top: 2rem;
+}
+
+/* —— Formularios —— */
+.panel-form-producto .form-control,
+.panel-form-producto .form-select {
+    max-width: 42rem;
+    border-radius: 10px;
+    border: 1px solid #cfd8dc;
+}
+
+.panel-form-producto .form-control:focus,
+.panel-form-producto .form-select:focus {
+    border-color: var(--panel-blue);
+    box-shadow: 0 0 0 0.2rem rgba(3, 169, 244, 0.2);
+}
+
+.panel-form-block {
+    background: var(--panel-surface);
+    border-radius: var(--panel-radius);
+    padding: 1.5rem;
+    border: 1px dashed var(--panel-border-dashed);
+    margin-bottom: 1.5rem;
+}
+
+.variante-form-row td {
+    vertical-align: middle;
+}
+
+.variante-form-row input[type="text"],
+.variante-form-row input[type="number"] {
+    min-width: 4rem;
+}
+
+/* —— Dashboard —— */
+.panel-quick-links {
+    gap: 0.75rem;
+}
+
+.panel-chart-card {
+    background: var(--panel-surface);
+    border-radius: var(--panel-radius);
+    border: 1px solid rgba(2, 119, 189, 0.1);
+    box-shadow: var(--panel-shadow);
+    padding: 1.25rem 1.5rem;
+    height: 100%;
+}
+
+.panel-chart-card__head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.panel-chart-card__head h2 {
+    flex: 1;
+    min-width: 0;
+}
+
+.panel-card {
+    background: var(--panel-surface);
+    border-radius: var(--panel-radius);
+    border: 1px solid rgba(2, 119, 189, 0.1);
+    box-shadow: var(--panel-shadow);
+}
+
+.panel-grafico-export .dropdown-menu,
+.panel-tabla-export .dropdown-menu {
+    min-width: 11rem;
+}
+
+.panel-sim-ac {
+    position: relative;
+}
+
+.panel-sim-ac--open {
+    display: block;
+}
+
+.panel-sim-ac__empty {
+    margin-top: 6px;
+    padding: 8px 10px;
+    border: 1px solid rgba(2, 119, 189, 0.18);
+    border-radius: 12px;
+    background: #fff;
+    color: #607d8b;
+    font-size: 0.9rem;
+}
+
+.panel-sim-ac.panel-sim-ac--open {
+    margin-top: 6px;
+    border: 1px solid rgba(2, 119, 189, 0.18);
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 14px 34px rgba(2, 6, 23, 0.12);
+    overflow: hidden;
+    max-height: 240px;
+    overflow-y: auto;
+}
+
+.panel-sim-ac__item {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 10px 12px;
+    border: 0;
+    background: transparent;
+    font-size: 0.92rem;
+    cursor: pointer;
+}
+
+.panel-sim-ac__item:hover,
+.panel-sim-ac__item:focus {
+    background: rgba(2, 119, 189, 0.08);
+    outline: none;
+}
+
+.panel-sim-ac__item.is-active {
+    background: rgba(2, 119, 189, 0.12);
+}
+
+.panel-sim-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-right: 8px;
+    border: 1px solid rgba(2, 6, 23, 0.08);
+}
+
+.panel-sim-badge--ok {
+    background: rgba(46, 125, 50, 0.10);
+    color: #1b5e20;
+}
+
+.panel-sim-badge--low {
+    background: rgba(245, 124, 0, 0.12);
+    color: #e65100;
+}
+
+.panel-sim-badge--out {
+    background: rgba(211, 47, 47, 0.12);
+    color: #b71c1c;
+}
+
+.panel-chat-item {
+    position: relative;
+}
+
+.panel-chat-item--unread {
+    border-left: 6px solid rgba(2, 119, 189, 0.7) !important;
+    background: rgba(2, 119, 189, 0.04);
+}
+
+.panel-chat-item--closed {
+    opacity: 0.78;
+}
+
+.panel-chat-bubble {
+    border: 1px solid rgba(2, 119, 189, 0.12);
+    border-radius: 14px;
+    padding: 10px 12px;
+    max-width: 840px;
+    background: #fff;
+}
+
+.panel-chat-bubble--me {
+    background: rgba(255, 64, 129, 0.06);
+    border-color: rgba(255, 64, 129, 0.18);
+}
+
+.panel-chat-bubble--other {
+    background: #fff;
+}
+
+.panel-chart-wrap {
+    position: relative;
+    min-height: 220px;
+    max-height: 320px;
+}
+
+.panel-rank-list .list-group-item {
+    border-color: #eceff1;
+}
+
+.panel-imagen-preview-img {
+    max-width: 220px;
+    max-height: 220px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+.panel-export-toolbar .dropdown-menu {
+    min-width: 12rem;
+}
+
+@media (max-width: 576px) {
+    .panel-page-header {
+        padding: 1.15rem;
+    }
+
+    .panel-table thead th,
+    .panel-table tbody td {
+        padding: 0.65rem 0.5rem;
+        font-size: 0.9rem;
+    }
+}

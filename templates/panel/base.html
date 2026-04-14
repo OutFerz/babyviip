@@ -1,0 +1,86 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Panel{% endblock %} · Babyviip</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/panel.css' %}?v=20260414_2">
+</head>
+<body class="panel-body">
+    <!-- templates/panel/base.html · static/css/panel.css · static/js/panel.js -->
+    {% with u=request.resolver_match.url_name %}
+    <nav class="navbar navbar-expand-lg panel-nav border-bottom mb-0 py-2">
+        <div class="container-fluid flex-wrap gap-2 align-items-center">
+            <a class="navbar-brand panel-brand fw-bold mb-0 text-decoration-none" href="{% url 'panel_inicio' %}">Babyviip · Panel catálogo</a>
+            <div class="panel-nav-scroller-wrap me-auto">
+                <button type="button" class="panel-nav-scroll-btn panel-nav-scroll-btn--left" aria-label="Mover pestañas a la izquierda" title="Izquierda">‹</button>
+                <div class="panel-nav-scroller" role="navigation" aria-label="Navegación del panel">
+                    <ul class="navbar-nav flex-row flex-nowrap gap-1 gap-md-3">
+                <li class="nav-item">
+                    <a class="nav-link {% if u == 'panel_inicio' %}nav-link--active{% endif %}" href="{% url 'panel_inicio' %}">Resumen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if u == 'panel_productos' or u == 'panel_producto_nuevo' or u == 'panel_producto_editar' or u == 'panel_producto_eliminar' %}nav-link--active{% endif %}" href="{% url 'panel_productos' %}">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if u == 'panel_categorias' or u == 'panel_categoria_nueva' or u == 'panel_categoria_editar' or u == 'panel_categoria_eliminar' %}nav-link--active{% endif %}" href="{% url 'panel_categorias' %}">Categorías</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if u == 'panel_configuracion' %}nav-link--active{% endif %}" href="{% url 'panel_configuracion' %}">Configuración</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if u == 'panel_auditoria' %}nav-link--active{% endif %}" href="{% url 'panel_auditoria' %}">Auditoría</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if u == 'panel_simulador_compra' %}nav-link--active{% endif %}" href="{% url 'panel_simulador_compra' %}">
+                        Simulador
+                        {% if sim_cart_count %}
+                            <span class="badge rounded-pill text-bg-danger ms-1">{{ sim_cart_count }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'carrito' %}">
+                        Carrito público
+                        {% if carrito_count %}
+                            <span class="badge rounded-pill text-bg-danger ms-1">{{ carrito_count }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if u == 'panel_mensajes' or u == 'panel_mensajes_detalle' %}nav-link--active{% endif %}" href="{% url 'panel_mensajes' %}">
+                        Mensajes
+                        {% if panel_counts.mensajes_no_leidos %}
+                            <span class="badge rounded-pill text-bg-danger ms-1">{{ panel_counts.mensajes_no_leidos }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+                    </ul>
+                </div>
+                <button type="button" class="panel-nav-scroll-btn panel-nav-scroll-btn--right" aria-label="Mover pestañas a la derecha" title="Derecha">›</button>
+            </div>
+            <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}">Volver al sitio</a>
+        </div>
+    </nav>
+    {% endwith %}
+    <main class="container py-4 panel-main-inner">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% elif message.tags == 'warning' %}alert-warning{% else %}alert-info{% endif %} alert-dismissible fade show rounded-4 border-0 shadow-sm" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer class="panel-footer-site">
+        Gestión centralizada de inventario y catálogo — coherente con la evolución hacia operación en la nube (informes Babyviip).
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/panel.js' %}?v=20260414_4"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

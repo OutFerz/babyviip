@@ -82,3 +82,18 @@ Este proyecto utiliza Docker para levantar un entorno completo con Python y Post
    ```
 
    y finalmente conectarnos a http://IP_ADDRESS:8000
+
+---
+
+## Autenticación y datos demo
+
+- El modelo de usuario es **`erp.Usuario`** (`AUTH_USER_MODEL`). **Cliente** guarda datos de compra y puede enlazarse a un usuario (`usuario` OneToOne, opcional).
+- **Registro / login:** `/accounts/registro/`, `/accounts/login/`, cerrar sesión con el botón **Salir**.
+- **Ventas y clientes** (`/ventas/`): solo usuarios con `is_staff` o `es_administrador_tienda`. El enlace **Administración** (Django Admin) solo aparece si `is_staff`.
+- **Productos de ejemplo** (polera U.CH. y pantalón con URLs de imagen):
+
+  ```bash
+  docker compose exec web python manage.py seed_productos
+  ```
+
+- Si venías de una base creada con el modelo antiguo (sin `Usuario`), puede hacer falta recrear el volumen y migrar de nuevo: `docker compose down -v` y luego `up -d`, `migrate` y `seed_productos`.

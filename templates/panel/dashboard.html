@@ -1,0 +1,253 @@
+{% extends "panel/base.html" %}
+{% load static %}
+{% block title %}Resumen{% endblock %}
+{% block content %}
+<div class="panel-page-header">
+    <span class="panel-badge-cloud">Dashboard operativo</span>
+    <h1>Resumen</h1>
+    <p class="panel-page-lead mb-0">
+        Vista única para inventario, ventas y comportamiento en el catálogo: apoya la decisión de reponer, publicar u ocultar productos,
+        alineado con la gestión centralizada frente a Excel/Word (informes Babyviip).
+    </p>
+</div>
+
+<div class="panel-export-toolbar d-flex flex-wrap gap-2 align-items-center mb-4">
+    <div class="dropdown">
+        <button class="btn panel-btn-ghost dropdown-toggle" type="button" id="panel-export-datos" data-bs-toggle="dropdown" aria-expanded="false">
+            Descargar informe completo
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="panel-export-datos">
+            <li><a class="dropdown-item" href="{% url 'panel_exportar' fmt='csv' %}">CSV</a></li>
+            <li><a class="dropdown-item" href="{% url 'panel_exportar' fmt='xlsx' %}">Excel (.xlsx)</a></li>
+            <li><a class="dropdown-item" href="{% url 'panel_exportar' fmt='pdf' %}">PDF</a></li>
+            <li><a class="dropdown-item" href="{% url 'panel_exportar' fmt='html' %}">HTML</a></li>
+        </ul>
+    </div>
+    <span class="small text-muted">Cada gráfico y cada tabla tiene su propio menú <strong>Descargar</strong> (CSV, Excel, PDF, HTML; gráficos también PNG).</span>
+</div>
+
+<div class="panel-stats mb-4" aria-label="Indicadores principales">
+    <div class="panel-stat-card">
+        <div class="panel-stat-card__value">{{ total_productos }}</div>
+        <div class="panel-stat-card__label">Productos</div>
+    </div>
+    <div class="panel-stat-card">
+        <div class="panel-stat-card__value">{{ total_categorias }}</div>
+        <div class="panel-stat-card__label">Categorías</div>
+    </div>
+    <div class="panel-stat-card">
+        <div class="panel-stat-card__value">{{ productos_stock_bajo }}</div>
+        <div class="panel-stat-card__label">Prod. stock bajo (&lt;{{ low_stock_threshold }})</div>
+    </div>
+    <div class="panel-stat-card">
+        <div class="panel-stat-card__value">{{ variantes_agotadas }}</div>
+        <div class="panel-stat-card__label">Variantes visibles agotadas</div>
+    </div>
+</div>
+
+<div class="panel-quick-links panel-toolbar flex-wrap mb-4">
+    <a class="btn panel-btn-primary" href="{% url 'panel_productos' %}">Productos</a>
+    <a class="btn panel-btn-ghost" href="{% url 'panel_categorias' %}">Categorías</a>
+    <a class="btn panel-btn-ghost" href="{% url 'ventas_clientes' %}">Pedidos / ventas</a>
+    {% if user.is_staff %}
+    <a class="btn panel-btn-ghost" href="{% url 'admin:erp_cliente_changelist' %}">Clientes (admin)</a>
+    {% endif %}
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-lg-6">
+        <div class="panel-chart-card">
+            <div class="panel-chart-card__head">
+                <h2 class="h6 text-uppercase text-muted mb-0">Indicadores clave</h2>
+                {% include "panel/includes/grafico_export_menu.html" with gid="kpis" canvas_id="panel-chart-kpis" file_base="babyviip_kpis" %}
+            </div>
+            <div class="panel-chart-wrap">
+                <canvas id="panel-chart-kpis" height="220" aria-label="Gráfico de KPIs"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel-chart-card">
+            <div class="panel-chart-card__head">
+                <h2 class="h6 text-uppercase text-muted mb-0">Más vendidos (unidades)</h2>
+                {% include "panel/includes/grafico_export_menu.html" with gid="vendidos" canvas_id="panel-chart-vendidos" file_base="babyviip_top_ventas" %}
+            </div>
+            <div class="panel-chart-wrap">
+                <canvas id="panel-chart-vendidos" height="220" aria-label="Top ventas"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel-chart-card">
+            <div class="panel-chart-card__head">
+                <h2 class="h6 text-uppercase text-muted mb-0">Más favoritos (⭐)</h2>
+                {% include "panel/includes/grafico_export_menu.html" with gid="favoritos" canvas_id="panel-chart-favoritos" file_base="babyviip_top_favoritos" %}
+            </div>
+            <div class="panel-chart-wrap">
+                <canvas id="panel-chart-favoritos" height="220" aria-label="Top favoritos"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel-chart-card">
+            <div class="panel-chart-card__head">
+                <h2 class="h6 text-uppercase text-muted mb-0">Términos más buscados</h2>
+                {% include "panel/includes/tabla_export_menu.html" with tid="busquedas" %}
+            </div>
+            {% if top_busquedas %}
+            <ul class="list-group list-group-flush panel-rank-list">
+                {% for row in top_busquedas %}
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-transparent">
+                    <span>{{ row.termino }}</span>
+                    <span class="badge rounded-pill text-bg-primary">{{ row.total }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="text-muted small mb-0">Aún no hay búsquedas registradas en el catálogo.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="panel-card-table p-3">
+            <div class="panel-chart-card__head mb-3">
+                <h2 class="h6 text-uppercase text-muted mb-0">Ventas recientes</h2>
+                {% include "panel/includes/tabla_export_menu.html" with tid="ventas" %}
+            </div>
+            {% if ventas_recientes %}
+            <div class="table-responsive">
+                <table class="table table-sm panel-table mb-0">
+                    <thead><tr><th>#</th><th>Fecha</th><th>Cliente</th><th class="text-end">Total</th></tr></thead>
+                    <tbody>
+                        {% for v in ventas_recientes %}
+                        <tr>
+                            <td>{{ v.id }}</td>
+                            <td>{{ v.fecha|date:"d/m/Y H:i" }}</td>
+                            <td>{% if v.cliente %}{{ v.cliente.nombre }}{% else %}—{% endif %}</td>
+                            <td class="text-end">${{ v.total }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-muted small mb-0">Sin ventas registradas.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel-card-table p-3">
+            <div class="panel-chart-card__head mb-3">
+                <h2 class="h6 text-uppercase text-muted mb-0">Ranking · unidades vendidas</h2>
+                {% include "panel/includes/tabla_export_menu.html" with tid="ranking_vendidos" %}
+            </div>
+            {% if top_vendidos %}
+            <ul class="list-group list-group-flush panel-rank-list">
+                {% for row in top_vendidos %}
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-transparent">
+                    <span>{{ row.variante__producto__nombre }}</span>
+                    <span class="badge rounded-pill text-bg-success">{{ row.total }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="text-muted small mb-0">Sin líneas de venta aún.</p>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel-card-table p-3">
+            <div class="panel-chart-card__head mb-3">
+                <h2 class="h6 text-uppercase text-muted mb-0">Ranking · favoritos</h2>
+                {% include "panel/includes/tabla_export_menu.html" with tid="ranking_favoritos" %}
+            </div>
+            {% if top_favoritos %}
+            <ul class="list-group list-group-flush panel-rank-list">
+                {% for row in top_favoritos %}
+                <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-transparent">
+                    <span>{{ row.producto__nombre }}</span>
+                    <span class="badge rounded-pill" style="background:#ec407a;">{{ row.total }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p class="text-muted small mb-0">Sin favoritos con cuenta aún (o solo favoritos locales en navegadores).</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{{ chart_kpis|json_script:"chart-kpis-data" }}
+{{ chart_vendidos|json_script:"chart-vendidos-data" }}
+{{ chart_favoritos|json_script:"chart-favoritos-data" }}
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+    var pink = "rgba(236, 64, 122, 0.85)";
+    var blue = "rgba(2, 119, 189, 0.85)";
+    function read(id) {
+        var el = document.getElementById(id);
+        if (!el) return { labels: [], values: [] };
+        try {
+            return JSON.parse(el.textContent);
+        } catch (e) {
+            return { labels: [], values: [] };
+        }
+    }
+    var kpis = read("chart-kpis-data");
+    var vend = read("chart-vendidos-data");
+    var fav = read("chart-favoritos-data");
+
+    if (document.getElementById("panel-chart-kpis") && kpis.labels && kpis.labels.length) {
+        new Chart(document.getElementById("panel-chart-kpis"), {
+            type: "bar",
+            data: {
+                labels: kpis.labels,
+                datasets: [{
+                    label: "Cantidad",
+                    data: kpis.values,
+                    backgroundColor: [pink, blue, pink, blue],
+                    borderRadius: 8,
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { y: { beginAtZero: true, ticks: { precision: 0 } } },
+            },
+        });
+    }
+    function horizBar(canvasId, payload, color) {
+        if (!document.getElementById(canvasId) || !payload.labels || !payload.labels.length) return;
+        new Chart(document.getElementById(canvasId), {
+            type: "bar",
+            data: {
+                labels: payload.labels,
+                datasets: [{
+                    label: "Veces",
+                    data: payload.values,
+                    backgroundColor: color,
+                    borderRadius: 6,
+                }],
+            },
+            options: {
+                indexAxis: "y",
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: { x: { beginAtZero: true, ticks: { precision: 0 } } },
+            },
+        });
+    }
+    horizBar("panel-chart-vendidos", vend, blue);
+    horizBar("panel-chart-favoritos", fav, pink);
+})();
+</script>
+{% endblock %}

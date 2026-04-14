@@ -1,119 +1,142 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienvenidos a Baby VIIP - Tu Tienda de Bebé</title>
+    <title>{{ contacto.nombre_tienda }} — Ropa y accesorios para bebés (0 a 3 años)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            /* FONDO CELESTE PASTEL MUY SUAVE (Característico de Baby VIIP) */
-            background-color: #e3f2fd;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .hero-section {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-        }
-        .card-welcome {
-            background: white;
-            padding: 3rem;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.07);
-            /* BORDE DASHED ROSADO (Toque tierno) */
-            border: 3px dashed #f8bbd0;
-        }
-        .brand-name {
-            /* TÍTULO ROSADO FUERTE PERO SUAVE */
-            color: #ec407a;
-            font-weight: 800;
-            font-size: 3.8rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: -1px;
-        }
-        .sub-brand {
-            color: #0277bd; /* Azul sutil para contraste */
-            font-weight: 400;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-        .status-badge {
-            /* BADGE CON TONOS CELESTES */
-            background-color: #b3e5fc;
-            color: #01579b;
-            padding: 0.6rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 2rem;
-        }
-        .lead {
-            color: #546e7a;
-            font-size: 1.25rem;
-        }
-        .btn-baby-pink {
-            /* BOTÓN PRINCIPAL ROSADO */
-            background-color: #ec407a;
-            color: white;
-            border: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        .btn-baby-pink:hover {
-            background-color: #d81b60;
-            color: white;
-            transform: translateY(-2px);
-        }
-        .btn-outline-baby-blue {
-            /* BOTÓN SECUNDARIO CELESTE EN OUTLINE */
-            border: 2px solid #03a9f4;
-            color: #03a9f4;
-            font-weight: bold;
-        }
-        .btn-outline-baby-blue:hover {
-            background-color: #03a9f4;
-            color: white;
-        }
-        footer {
-            margin-top: 3rem;
-            color: #90a4ae;
-            font-size: 0.85rem;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/site_nav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
+    <!--
+      Página: templates/home.html
+      Estilos: static/css/site_nav.css, static/css/home.css
+      Script: static/js/home.js
+      Vista: core.views.home · Contexto contacto: core.context_processors.contacto
+    -->
 
-    <div class="container hero-section">
-        <div class="card-welcome col-md-8 shadow-lg">
-            <div class="status-badge">☁️ Servidor Web Azure: Desplegado y Online</div>
+    {% include 'partials/site_nav.html' %}
 
-            <h1 class="brand-name">Baby VIIP</h1>
+    <main class="container hero-section">
+        <div class="card-welcome col-lg-10 mx-auto shadow-lg">
+            <div class="status-badge">☁️ Tienda en evolución — presencia local + nube</div>
+
+            <h1 class="brand-name">{{ contacto.nombre_tienda }}</h1>
             <div class="sub-brand">Pequeños detalles, grandes sonrisas.</div>
 
-            <p class="lead mb-4">Estamos preparando nuestra nueva tienda online. Desde nuestro local físico, estamos saltando a la nube para estar más cerca de ti.</p>
+            <p class="lead mb-4">{{ contacto.texto_bienvenida }}</p>
+
+            <section class="visitors-note mb-4" aria-labelledby="visitantes-titulo">
+                <h2 id="visitantes-titulo">Explora el sistema</h2>
+                <p class="mb-3 text-secondary">
+                    Como visitante puedes recorrer las secciones que reflejan el modelo de datos del ERP (mismas tablas que usa el equipo en el admin).
+                </p>
+                <div class="d-flex flex-wrap gap-2 justify-content-center">
+                    <a class="btn btn-outline-baby-blue btn-lg" href="{% url 'catalogo' %}">Catálogo (inventario)</a>
+                    {% if user.is_authenticated %}
+                        {% if user.is_staff or user.es_administrador_tienda %}
+                        <a class="btn btn-baby-pink btn-lg" href="{% url 'panel_ventas' %}">Ventas y clientes</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </section>
 
             <hr class="my-4" style="border-top: 2px solid #e0e0e0;">
 
-            <p class="text-muted mb-4">Muy pronto podrás explorar todo nuestro catálogo de ropita de bebé con la seguridad y facilidad que mereces.</p>
+            <p class="text-muted mb-4">
+                Síguenos en Instagram y Facebook o escríbenos por WhatsApp. También te esperamos en nuestro local en San Miguel.
+            </p>
 
-            <div class="d-grid gap-2 d-md-block mt-4">
-                <button class="btn btn-outline-baby-blue btn-lg px-5 me-md-3 mb-3 mb-md-0" type="button">Visitar Local</button>
-                <button class="btn btn-baby-pink btn-lg px-5" type="button">E-commerce Próximamente</button>
+            <div class="d-grid gap-2 d-md-flex flex-md-wrap justify-content-center mt-3 mb-2">
+                {% if contacto.mapa_url %}
+                    <a class="btn btn-outline-baby-blue btn-lg px-4" href="{{ contacto.mapa_url }}" target="_blank" rel="noopener noreferrer">Cómo llegar (mapa)</a>
+                {% endif %}
+                {% if contacto.whatsapp_url %}
+                    <a class="btn btn-baby-pink btn-lg px-4" href="{{ contacto.whatsapp_url }}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                {% endif %}
             </div>
 
-            <footer>
-                &copy; 2026 Baby VIIP - Solución Cloud Computing - Proyecto de Taller INACAP
+            <section id="contacto" class="contact-section">
+                <h2>Contacto, redes y local</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3>Instagram</h3>
+                        {% if contacto.instagram_url %}
+                            <p class="mb-1"><a href="{{ contacto.instagram_url }}" target="_blank" rel="noopener noreferrer">{{ contacto.instagram_usuario }}</a></p>
+                        {% else %}
+                            <p class="mb-1 text-muted">{{ contacto.instagram_usuario }}</p>
+                        {% endif %}
+                        <div class="contact-actions">
+                            {% if contacto.instagram_url %}
+                                <a class="btn btn-sm btn-outline-baby-blue" href="{{ contacto.instagram_url }}" target="_blank" rel="noopener noreferrer">Ir al perfil</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Facebook</h3>
+                        {% if contacto.facebook_url %}
+                            <p class="mb-1"><a href="{{ contacto.facebook_url }}" target="_blank" rel="noopener noreferrer">{{ contacto.facebook_nombre }}</a></p>
+                        {% else %}
+                            <p class="mb-1 text-muted">{{ contacto.facebook_nombre }}</p>
+                        {% endif %}
+                        <div class="contact-actions">
+                            {% if contacto.facebook_url %}
+                                <a class="btn btn-sm btn-outline-baby-blue" href="{{ contacto.facebook_url }}" target="_blank" rel="noopener noreferrer">Abrir Facebook</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Teléfono y correo</h3>
+                        <p class="mb-1">
+                            {% if contacto.telefono_href %}
+                                <a href="tel:{{ contacto.telefono_href }}">{{ contacto.telefono }}</a>
+                            {% else %}
+                                {{ contacto.telefono }}
+                            {% endif %}
+                        </p>
+                        <p class="mb-0">
+                            {% if contacto.correo %}
+                                <a href="mailto:{{ contacto.correo }}">{{ contacto.correo }}</a>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Dirección del local</h3>
+                        <p class="mb-2">{{ contacto.direccion }}</p>
+                        <div class="contact-actions">
+                            {% if contacto.mapa_url %}
+                                <a class="btn btn-sm btn-baby-pink" href="{{ contacto.mapa_url }}" target="_blank" rel="noopener noreferrer">Ver ubicación en el mapa</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="referencias">
+                <p>
+                    {{ contacto.nombre_tienda }} [{{ contacto.instagram_usuario }}]. (s.f.). [Perfil de Instagram]. Instagram. Recuperado el 13 de abril de 2026, de
+                    <a href="{{ contacto.instagram_url }}" target="_blank" rel="noopener noreferrer">{{ contacto.instagram_url }}</a>
+                </p>
+                <p>
+                    Babyviip. (s.f.). [Página de Facebook]. Facebook. Recuperado el 13 de abril de 2026, de
+                    <a href="{{ contacto.facebook_url }}" target="_blank" rel="noopener noreferrer">{{ contacto.facebook_url }}</a>
+                </p>
+                <p>
+                    Dirección: {{ contacto.direccion }} (Babyviip, s.f.). Mapa:
+                    <a href="{{ contacto.mapa_url }}" target="_blank" rel="noopener noreferrer">{{ contacto.mapa_url }}</a>.
+                    Teléfono de contacto: {{ contacto.telefono }} (Babyviip, s.f.).
+                </p>
+            </section>
+
+            <footer class="site-footer">
+                &copy; <span id="footer-year">2026</span> Babyviip — Cloud / INACAP · Proyecto académico
             </footer>
         </div>
-    </div>
+    </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'js/home.js' %}"></script>
 </body>
 </html>
-

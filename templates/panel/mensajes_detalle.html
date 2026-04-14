@@ -1,0 +1,59 @@
+{% extends "panel/base.html" %}
+{% block title %}Mensajes{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <div>
+            <h1 class="h4 mb-1">Conversación #{{ conv.id }}</h1>
+            <div class="text-muted small">
+                Cliente: <strong>{{ conv.cliente.username }}</strong>
+                {% if conv.asunto %}· Asunto: {{ conv.asunto }}{% endif %}
+            </div>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+            {% if is_admin %}
+                <form method="post" action="{% url 'panel_mensajes_asignar' pk=conv.id %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="quien" value="{% if conv.administrador_asignado_id == user.id %}nadie{% else %}yo{% endif %}">
+                    <button class="btn btn-sm btn-outline-primary" type="submit">
+                        {% if conv.administrador_asignado_id == user.id %}Desasignar{% else %}Asignarme{% endif %}
+                    </button>
+                </form>
+            {% endif %}
+            {% if conv.estado == "abierta" %}
+                <form method="post" action="{% url 'panel_mensajes_cerrar' pk=conv.id %}">
+                    {% csrf_token %}
+                    <button class="btn btn-sm btn-outline-danger" type="submit">Cerrar</button>
+                </form>
+            {% else %}
+                <span class="badge text-bg-secondary align-self-center">Cerrada</span>
+            {% endif %}
+            <a class="btn btn-sm btn-outline-secondary" href="{% url 'panel_mensajes' %}">Volver</a>
+        </div>
+    </div>
+
+    <div class="panel-card p-3 p-md-4 mb-3">
+        {% for m in mensajes %}
+            <div class="mb-3">
+                <div class="small text-muted">
+                    {% if m.emisor %}{{ m.emisor.username }}{% else %}—{% endif %} · {{ m.enviado_en|date:"d/m/Y H:i" }}
+                </div>
+                <div class="panel-chat-bubble {% if m.emisor_id == user.id %}panel-chat-bubble--me{% else %}panel-chat-bubble--other{% endif %}">
+                    {{ m.contenido|linebreaksbr }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if conv.estado == "abierta" %}
+        <div class="panel-card p-3 p-md-4">
+            <form method="post">
+                {% csrf_token %}
+                <label class="form-label">Respuesta</label>
+                <textarea class="form-control mb-2" name="contenido" rows="3" required></textarea>
+                <button class="btn btn-primary" type="submit">Enviar</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
+

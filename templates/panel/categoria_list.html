@@ -1,0 +1,46 @@
+{% extends "panel/base.html" %}
+{% block title %}Categorías{% endblock %}
+{% block content %}
+<div class="panel-page-header">
+    <span class="panel-badge-cloud">Taxonomía · catálogo</span>
+    <h1>Categorías</h1>
+    <p class="panel-page-lead">
+        Agrupa productos por tipo (poleras, pantalones, etc.) para mantener el catálogo ordenado y coherente con la vitrina pública.
+    </p>
+</div>
+
+{% if stats %}
+<div class="panel-stats" aria-label="Resumen de categorías">
+    <div class="panel-stat-card">
+        <div class="panel-stat-card__value">{{ stats.total }}</div>
+        <div class="panel-stat-card__label">Categorías definidas</div>
+    </div>
+</div>
+{% endif %}
+
+<div class="panel-toolbar">
+    <a href="{% url 'panel_categoria_nueva' %}" class="btn panel-btn-primary">+ Nueva categoría</a>
+</div>
+
+<div class="table-responsive panel-card-table">
+    <table class="table panel-table table-hover mb-0">
+        <thead>
+            <tr><th>Nombre</th><th>Descripción</th><th class="text-end">Acciones</th></tr>
+        </thead>
+        <tbody>
+            {% for c in categorias %}
+            <tr>
+                <td class="cell-name">{{ c.nombre }}</td>
+                <td class="small text-muted">{{ c.descripcion|default:"—"|truncatewords:15 }}</td>
+                <td class="text-end text-nowrap">
+                    <a href="{% url 'panel_categoria_editar' c.pk %}" class="btn btn-sm btn-outline-primary">Editar</a>
+                    <a href="{% url 'panel_categoria_eliminar' c.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="3" class="text-center text-muted py-5">Sin categorías. Crea la primera para asignar productos.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "panel/base.html" %}
+{% block title %}Eliminar producto{% endblock %}
+{% block content %}
+<div class="panel-page-header border-danger border-start" style="border-left-width: 5px !important;">
+    <span class="panel-badge-cloud">Confirmación</span>
+    <h1>Eliminar producto</h1>
+    <p class="panel-page-lead mb-0">Esta acción no se puede deshacer. Se eliminarán también todas las variantes asociadas.</p>
+</div>
+<p class="mb-4">¿Seguro que deseas eliminar <strong>{{ producto.nombre }}</strong>?</p>
+<form method="post">
+    {% csrf_token %}
+    <div class="panel-toolbar">
+        <button type="submit" class="btn btn-danger rounded-pill px-4 fw-semibold">Sí, eliminar</button>
+        <a href="{% url 'panel_productos' %}" class="btn panel-btn-ghost">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

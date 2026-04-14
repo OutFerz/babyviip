@@ -1,0 +1,17 @@
+{% extends "panel/base.html" %}
+{% block title %}Eliminar categoría{% endblock %}
+{% block content %}
+<div class="panel-page-header border-danger border-start" style="border-left-width: 5px !important;">
+    <span class="panel-badge-cloud">Confirmación</span>
+    <h1>Eliminar categoría</h1>
+    <p class="panel-page-lead mb-0">Solo es posible si no hay productos usando esta categoría.</p>
+</div>
+<p class="mb-4">¿Eliminar <strong>{{ categoria.nombre }}</strong>?</p>
+<form method="post">
+    {% csrf_token %}
+    <div class="panel-toolbar">
+        <button type="submit" class="btn btn-danger rounded-pill px-4 fw-semibold">Sí, eliminar</button>
+        <a href="{% url 'panel_categorias' %}" class="btn panel-btn-ghost">Cancelar</a>
+    </div>
+</form>
+{% endblock %}

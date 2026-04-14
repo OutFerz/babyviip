@@ -1,0 +1,88 @@
+{% extends "panel/base.html" %}
+{% block title %}Configuración{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <div>
+            <h1 class="h3 mb-1">{{ titulo }}</h1>
+            <p class="text-muted mb-0">
+                Contacto, redes y local del sitio público. Cambia aquí y se actualiza sin tocar el HTML.
+            </p>
+        </div>
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'home' %}#contacto">Ver sección en Inicio</a>
+    </div>
+
+    <div class="panel-card p-4">
+        <form method="post" novalidate>
+            {% csrf_token %}
+
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger rounded-4 border-0 shadow-sm">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+
+            <div class="row g-3">
+                <div class="col-12">
+                    <label class="form-label" for="{{ form.nombre_tienda.id_for_label }}">{{ form.nombre_tienda.label }}</label>
+                    {{ form.nombre_tienda }}
+                    {% if form.nombre_tienda.errors %}<div class="text-danger small mt-1">{{ form.nombre_tienda.errors }}</div>{% endif %}
+                </div>
+                <div class="col-12">
+                    <label class="form-label" for="{{ form.texto_bienvenida.id_for_label }}">{{ form.texto_bienvenida.label }}</label>
+                    {{ form.texto_bienvenida }}
+                    {% if form.texto_bienvenida.errors %}<div class="text-danger small mt-1">{{ form.texto_bienvenida.errors }}</div>{% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <h2 class="h6 text-uppercase text-muted mb-2">Instagram</h2>
+                    <label class="form-label" for="{{ form.instagram_usuario.id_for_label }}">{{ form.instagram_usuario.label }}</label>
+                    {{ form.instagram_usuario }}
+                    {% if form.instagram_usuario.errors %}<div class="text-danger small mt-1">{{ form.instagram_usuario.errors }}</div>{% endif %}
+                    <label class="form-label mt-2" for="{{ form.instagram_url.id_for_label }}">{{ form.instagram_url.label }}</label>
+                    {{ form.instagram_url }}
+                    {% if form.instagram_url.errors %}<div class="text-danger small mt-1">{{ form.instagram_url.errors }}</div>{% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <h2 class="h6 text-uppercase text-muted mb-2">Facebook</h2>
+                    <label class="form-label" for="{{ form.facebook_nombre.id_for_label }}">{{ form.facebook_nombre.label }}</label>
+                    {{ form.facebook_nombre }}
+                    {% if form.facebook_nombre.errors %}<div class="text-danger small mt-1">{{ form.facebook_nombre.errors }}</div>{% endif %}
+                    <label class="form-label mt-2" for="{{ form.facebook_url.id_for_label }}">{{ form.facebook_url.label }}</label>
+                    {{ form.facebook_url }}
+                    {% if form.facebook_url.errors %}<div class="text-danger small mt-1">{{ form.facebook_url.errors }}</div>{% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <h2 class="h6 text-uppercase text-muted mb-2">Contacto</h2>
+                    <label class="form-label" for="{{ form.telefono.id_for_label }}">{{ form.telefono.label }}</label>
+                    {{ form.telefono }}
+                    {% if form.telefono.errors %}<div class="text-danger small mt-1">{{ form.telefono.errors }}</div>{% endif %}
+                    <label class="form-label mt-2" for="{{ form.correo.id_for_label }}">{{ form.correo.label }}</label>
+                    {{ form.correo }}
+                    {% if form.correo.errors %}<div class="text-danger small mt-1">{{ form.correo.errors }}</div>{% endif %}
+                </div>
+
+                <div class="col-md-6">
+                    <h2 class="h6 text-uppercase text-muted mb-2">Local</h2>
+                    <label class="form-label" for="{{ form.direccion.id_for_label }}">{{ form.direccion.label }}</label>
+                    {{ form.direccion }}
+                    {% if form.direccion.errors %}<div class="text-danger small mt-1">{{ form.direccion.errors }}</div>{% endif %}
+                    <label class="form-label mt-2" for="{{ form.mapa_url.id_for_label }}">{{ form.mapa_url.label }}</label>
+                    {{ form.mapa_url }}
+                    {% if form.mapa_url.errors %}<div class="text-danger small mt-1">{{ form.mapa_url.errors }}</div>{% endif %}
+                    <label class="form-label mt-2" for="{{ form.whatsapp_url.id_for_label }}">{{ form.whatsapp_url.label }}</label>
+                    {{ form.whatsapp_url }}
+                    {% if form.whatsapp_url.errors %}<div class="text-danger small mt-1">{{ form.whatsapp_url.errors }}</div>{% endif %}
+                </div>
+            </div>
+
+            <div class="d-flex gap-2 mt-4">
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <a class="btn btn-outline-secondary" href="{% url 'panel_inicio' %}">Volver al dashboard</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+

@@ -1,0 +1,157 @@
+{% extends "panel/base.html" %}
+{% block title %}Simulador de compra{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <div>
+            <h1 class="h3 mb-1">Simulador de compra</h1>
+            <p class="text-muted mb-0">
+                Herramienta para probar flujos de compra sin mezclar pruebas con ventas reales.
+            </p>
+        </div>
+        <a class="btn btn-sm btn-outline-secondary" href="{% url 'ventas_clientes' %}">Ver ventas</a>
+    </div>
+
+    <div class="panel-card p-3 p-md-4 mb-3">
+        <div class="alert alert-warning border-0 rounded-4 mb-3">
+            <strong>Importante:</strong>
+            <ul class="mb-0">
+                <li><strong>Sin impacto</strong>: no crea venta ni descuenta stock.</li>
+                <li><strong>Temporal</strong>: crea venta <em>simulada</em>, descuenta stock y se puede <strong>revertir</strong>.</li>
+                <li><strong>Permanente</strong>: crea venta <em>real</em> (incluye reportes) y descuenta stock.</li>
+            </ul>
+        </div>
+
+        <div class="d-flex flex-wrap gap-2 align-items-center mb-2">
+            <span class="badge text-bg-light border">Carrito de simulación: <strong>{{ sim_cart_count }}</strong></span>
+            <span class="small text-muted">Se guarda separado del carrito público.</span>
+        </div>
+
+        <form method="post" novalidate id="panel-simulador-form" data-variantes-url="{% url 'panel_api_variantes' %}">
+            {% csrf_token %}
+            {{ form.line_count }}
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger border-0 rounded-4 mt-2 mb-0">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+            <div class="row g-3">
+                <div class="col-lg-4">
+                    <label class="form-label">Cliente (opcional)</label>
+                    {{ form.cliente }}
+                    <div class="form-text">{{ form.cliente.help_text }}</div>
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Modo</label>
+                    {{ form.modo }}
+                    {% if form.modo.errors %}
+                        <div class="text-danger small mt-1">{{ form.modo.errors }}</div>
+                    {% endif %}
+                </div>
+                <div class="col-lg-4">
+                    <label class="form-label">Estado</label>
+                    {{ form.estado }}
+                    {% if form.estado.errors %}
+                        <div class="text-danger small mt-1">{{ form.estado.errors }}</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div id="panel-simulador-modo-banner" class="alert mt-3 mb-0 rounded-4 border-0">
+                Modo seleccionado: <strong id="panel-simulador-modo-text"></strong>
+            </div>
+
+            <div class="form-check mt-3" id="panel-simulador-confirm-wrap">
+                {{ form.confirmar_permanente }}
+                <label class="form-check-label" for="{{ form.confirmar_permanente.id_for_label }}">
+                    {{ form.confirmar_permanente.label }}
+                </label>
+                {% if form.confirmar_permanente.errors %}
+                    <div class="text-danger small mt-1">{{ form.confirmar_permanente.errors }}</div>
+                {% endif %}
+            </div>
+
+            <hr class="my-4">
+
+            <h2 class="h6 text-uppercase text-muted">Productos (variantes)</h2>
+            <div class="table-responsive">
+                <table class="table table-sm align-middle" id="panel-simulador-tabla">
+                    <thead class="table-light">
+                    <tr>
+                        <th style="min-width: 320px;">Variante</th>
+                        <th style="min-width: 220px;">Buscar</th>
+                        <th style="width: 180px;">Stock / Precio</th>
+                        <th style="width: 140px;">Cantidad</th>
+                        <th style="width: 80px;"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for lf in lineas %}
+                        <tr class="panel-sim-line" data-prefix="{{ lf.prefix }}">
+                            <td>
+                                {{ lf.variante }}
+                                {% if lf.variante.errors %}
+                                    <div class="text-danger small mt-1">{{ lf.variante.errors }}</div>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <input class="form-control form-control-sm panel-sim-search" type="search"
+                                       placeholder="Escribe para filtrar…" autocomplete="off">
+                                <div class="panel-sim-ac" aria-live="polite"></div>
+                            </td>
+                            <td class="small text-muted panel-sim-meta">—</td>
+                            <td>
+                                {{ lf.cantidad }}
+                                {% if lf.cantidad.errors %}
+                                    <div class="text-danger small mt-1">{{ lf.cantidad.errors }}</div>
+                                {% endif %}
+                            </td>
+                            <td class="text-end">
+                                <button type="button" class="btn btn-sm btn-outline-danger panel-sim-remove" title="Quitar">×</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="d-flex flex-wrap gap-2 align-items-center mb-3">
+                <button type="button" class="btn btn-sm btn-outline-primary" id="panel-simulador-add-line">+ Agregar línea</button>
+                <span class="small text-muted">Tip: usa “Buscar” para filtrar el dropdown de variantes.</span>
+            </div>
+
+            <div class="panel-card p-3 mb-3" id="panel-simulador-resumen">
+                <div class="d-flex flex-wrap justify-content-between gap-2 align-items-center">
+                    <div>
+                        <div class="text-muted small">Resumen</div>
+                        <div class="fw-semibold">
+                            Total estimado: <span id="panel-sim-total">$0</span>
+                            <span class="text-muted small">· (estimación en cliente)</span>
+                        </div>
+                    </div>
+                    <div class="text-muted small">
+                        Impacto: <strong id="panel-sim-impacto">—</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button class="btn btn-primary" type="submit">Ejecutar simulación</button>
+                <a class="btn btn-outline-secondary" href="{% url 'panel_inicio' %}">Volver</a>
+            </div>
+        </form>
+    </div>
+
+    {% if venta_temporal %}
+        <div class="panel-card p-3 p-md-4">
+            <h2 class="h5 mb-2">Última venta temporal creada</h2>
+            <p class="mb-2 text-muted">
+                Venta #{{ venta_temporal.id }} · Estado {{ venta_temporal.get_estado_display }} · Total ${{ venta_temporal.total }}
+            </p>
+            <form method="post" action="{% url 'panel_simulador_revertir' pk=venta_temporal.id %}">
+                {% csrf_token %}
+                <button class="btn btn-outline-danger" type="submit">Revertir simulación (reponer stock)</button>
+            </form>
+        </div>
+    {% endif %}
+{% endblock %}
+

@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'erp',
+    'erp.apps.ErpConfig',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +70,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.contacto',
+                'core.context_processors_cart.carrito',
+                'core.context_processors_sim_cart.carrito_simulado',
+                'erp.context_processors.panel_unread_counts',
             ],
         },
     },
@@ -127,4 +131,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = "static/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+
+MEDIA_URL = "media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+# Modelo de usuario personalizado (autenticación separada de Cliente)
+AUTH_USER_MODEL = "erp.Usuario"
+
+# Panel / inventario: variantes visibles con 0 < stock < este valor cuentan como "stock bajo"
+STOCK_BAJO_UMBRAL = int(os.environ.get("STOCK_BAJO_UMBRAL", "5"))
+
+LOGIN_URL = "/accounts/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"

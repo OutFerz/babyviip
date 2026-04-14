@@ -1,0 +1,900 @@
+﻿C:\Users\dupre_000\Downloads\Sin título-1-01.jpg 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+Informe de Transformación Digital analizando la compañía
+Empresa Babyviip
+Venta de Ropa de bebe recién nacidos hasta 3 años.
+
+
+
+
+
+
+
+
+
+
+NOMBRE: Víctor Gangas, Aron Barrientos, Fernando Pizarro, Paola Pereira, Diego Diaz
+CARRERA: Ingenieria en Informatica
+SECCIÓN:  FGIE02/D-IEI-N5-P2-C2(F)(LM)/D
+ASIGNATURA: Innovación y Emprendimiento II
+PROFESOR: Claudio Farias
+FECHA: 13/04/2026
+
+
+Índice
+Introducción        3
+Desarrollo        4
+Preparación de entrevista en profundidad a usuario        4
+Pauta de entrevista en profundidad a Jefe        5
+Pauta de entrevista en profundidad a Empleado        7
+Pauta de entrevista en profundidad a Cliente        9
+Pauta de entrevista en profundidad a Cliente        10
+Cuestionario de preguntas a Usuario        11
+Preparación de pauta de observación no participante        12
+Pauta de observación no participante AEIOU        13
+Entrevista a expertos        15
+Pauta de entrevista Expertas        15
+Pauta de entrevista Expertas        17
+Cuestionario de preguntas Expertas        17
+Hallazgos        18
+Tópico A:        18
+Tópico A:        18
+Tópico B:        19
+Tópico B:        19
+Matriz de categorización de insights        21
+MAPA DE CATEGORIZACIÓN DE INSIGHTS (BABYVIIP)        22
+TABLA DE PRIORIZACIÓN DE INSIGHTS (BABYVIIP)        22
+Redefinición del desafío        23
+Ficha de antecedentes – Babyviip        23
+Matriz de antecedentes – Babyviip        26
+Conclusión        27
+Bibliografía        28
+Anexos        29
+“Información de contacto y referencias de Babyviip”        29
+
+
+
+
+
+
+
+
+Introducción
+La transformación digital se ha consolidado como un factor determinante para la sostenibilidad y crecimiento de las pequeñas y medianas empresas en un entorno altamente competitivo y dinámico. En este contexto, el presente informe analiza el caso de la empresa Babyviip, un emprendimiento dedicado a la venta de ropa para bebés, que actualmente opera bajo un modelo híbrido, combinando la atención en un local físico con la comercialización a través de redes sociales como Instagram, Facebook y WhatsApp Business.
+El estudio tiene como propósito evaluar el nivel de madurez digital de la empresa, considerando tanto sus herramientas tecnológicas actuales como sus procesos operativos y la experiencia de sus clientes. A partir de entrevistas en profundidad a la dueña, colaboradores, clientes y expertas en el área, junto con observación no participante, se identifican prácticas consolidadas como el uso efectivo de redes sociales para la captación de clientes, así como importantes brechas asociadas principalmente a la gestión manual de procesos internos, destacando el control de inventario, la actualización de precios y la integración de la información en tiempo real.
+Los resultados evidencian que, si bien Babyviip presenta una alta disposición al cambio y una base digital funcional, su dependencia de herramientas como Excel y Word genera ineficiencias operativas, errores en el manejo del stock y dificultades en la experiencia del cliente, especialmente en la disponibilidad y precisión de la información. Asimismo, se observa una fuerte dependencia de redes sociales como canal principal de venta, lo que limita la escalabilidad del negocio y la automatización de sus procesos.
+En base a estos hallazgos, el informe busca no solo diagnosticar el estado actual de la empresa, sino también identificar oportunidades estratégicas de mejora, tales como la implementación de un sistema de punto de venta (POS) integrado, el desarrollo de un e-commerce y la automatización de procesos clave. Estas acciones permitirían optimizar la gestión interna, fortalecer la propuesta de valor y avanzar hacia una transformación digital más integral, alineada con las exigencias del mercado actual y las expectativas de los clientes.
+
+
+
+
+
+
+Desarrollo
+Preparación de entrevista en profundidad a usuario
+Objetivo general de la investigación
+	
+
+Objetivos específicos
+	Persona
+a entrevistar
+
+
+	Información que se busca
+	Formato de la entrevista
+	1 | Conocer la visión del liderazgo respecto a la transformación digital
+	Jefe        
+	Percepción sobre los desafíos actuales, visión a futuro y estrategias aplicadas        
+	Presencial
+	2 | Entender el nivel de digitalización actual de la empresa
+	Jefe        
+	Plataformas usadas, automatizaciones existentes, recursos digitales        
+	Presencial
+	3 |. Conocer la experiencia del empleado en el uso de herramientas digitales
+	Empleado        
+	Dificultades, ventajas, capacitaciones recibidas        
+	Presencial
+	4 |Identificar problemas de comunicación interna relacionados con herramientas digitales
+	Empleado        
+	Casos concretos de mal uso, falta de integración o capacitación        
+	Presencial
+	5 |Conocer el perfil y comportamiento digital del comprador
+	Potencial cliente
+	Cómo busca productos, qué canales digitales utiliza, hábitos de compra        
+	Presencial
+	6 |Identificar necesidades insatisfechas del cliente
+	Potencial cliente
+	Problemas frecuentes al buscar empresas similares        
+	Presencial
+	7 |Evaluar la percepción de la marca “iBabyviip” / Saber qué factores influyen en su decisión de compra
+	Potencial cliente
+	Conocimiento previo, imagen de la empresa. Precio, calidad, atención, sitio web, rapidez, confianza
+
+
+	Presencial
+	Pauta de entrevista en profundidad a Jefe
+Nombre: Irka ceron
+Edad: 20
+Ocupación: Jefe
+Tiempo en el cargo: 6 meses
+Relación con el servicio: Dueña del local / Gerente general
+	Medio de registro: Transcripción de entrevista oral
+Fecha: 05/04/2026
+Duración: 15 min
+	
+
+Temáticas
+	Citas clave
+	1 | Visión digital de la empresa
+¿Cómo describiría la visión digital actual de la empresa?
+¿Qué papel juega la tecnología en la estrategia general del negocio?
+	* "Actualmente, nuestra visión digital se centra en la captación y atención al cliente. La tecnología funciona como nuestra gran vitrina virtual a través de redes sociales, apoyando fuertemente las ventas de nuestro local físico, mientras preparamos el terreno para dar el salto a un e-commerce formal." 
+	2 |Recursos tecnológicos actuales
+¿Qué herramientas digitales utilizan actualmente en la empresa?
+¿Hay procesos que ya están automatizados?
+
+
+
+
+	* * "Para los cobros en el local físico utilizamos la máquina Transbank de Banco Estado. Nuestra comunicación y ventas digitales dependen del ecosistema de Meta (Instagram, Facebook y WhatsApp Business), apoyados con pautas de publicidad pagada. La gestión interna se maneja netamente con planillas Excel y documentos Word."
+	3|Experiencias previas con cambios digitales
+¿Qué cambios digitales han sido implementados anteriormente?
+¿Cómo fue la experiencia general en cuanto a adopción y resultados?
+	* "Los cambios más significativos han sido la implementación de pagos digitales con la máquina de Banco Estado y la transición a la venta por redes sociales con publicidad en Meta. La experiencia ha sido muy positiva en cuanto a captación de clientes, pero nos hizo darnos cuenta de las limitaciones de nuestras herramientas de administración actuales."
+	4 |Desafíos en la transformación digital
+¿Cuáles han sido los principales obstáculos al implementar tecnologías nuevas?
+¿Cómo se han abordado estos desafíos?
+	* "El principal obstáculo hoy es la gestión manual. Al llevar la contabilidad en Excel y hacer catálogos en Word, nuestro mayor dolor de cabeza es que el stock no siempre cuadra. Además, en el día a día, nos cuesta encontrar rápidamente un producto específico o confirmar su precio actualizado mientras atendemos."
+	5 |Necesidades futuras
+¿Qué necesidades tecnológicas cree que deben ser cubiertas en el corto o mediano plazo?
+¿Existen planes para futuras inversiones en digitalización?
+	* "La necesidad más urgente a mediano plazo es implementar la página web que tenemos proyectada. Necesitamos un sistema de punto de venta y catálogo digital que centralice y automatice nuestro inventario y precios, para dejar de depender de planillas manuales y eliminar los descuadres de mercadería."
+	6 |Cultura digital interna
+¿Cómo describiría la disposición del equipo a adoptar nuevas tecnologías?
+¿Se promueve la capacitación digital dentro de la empresa?
+	* "Existe una total disposición para adoptar nuevas tecnologías, ya que somos conscientes de que los procesos manuales actuales nos limitan. Al manejar diariamente campañas en Meta y cobros digitales, el equipo ya tiene una base sólida y está preparado para dar el paso hacia un sistema de gestión y ventas más automatizado."
+	
+
+
+
+
+
+
+
+
+
+
+
+Pauta de entrevista en profundidad a Empleado
+Nombre: Francisca Olmeca
+Edad: 45
+Ocupación: Venta y contabilidad.
+Tiempo en el cargo: 6 meses
+Relación con el servicio: Ayudante
+	Medio de registro: Transcripción de entrevista oral
+Fecha: 05/04/2026
+Duración:10 minutos
+	
+
+
+
+Temáticas
+	Citas clave
+	1 |Herramientas que utiliza
+¿Qué tipo de herramientas digitales forman parte de tus tareas diarias en “Babyviip”?
+¿Para qué tareas usas estas herramientas?
+	* "En el día a día uso Instagram, Facebook y WhatsApp Business para atender a los clientes y cerrar ventas online. En el local, cobro usando la máquina Transbank de Banco Estado. Para la parte administrativa, armo los catálogos de los productos en Word y trato de llevar la contabilidad y el stock en planillas de Excel.
+	2 |Dificultades con plataformas
+¿Has notado alguna dificultad al usar herramientas digitales en tu área?
+¿Hay alguna herramienta que consideres poco eficiente?
+	* "La mayor dificultad y lo que considero menos eficiente es el Excel. Muchas veces la planilla no me cuadra con las prendas que realmente hay en la tienda. Cuando atiendo a alguien, me cuesta mucho tiempo encontrar rápido un producto específico o el precio actualizado porque tengo que buscar manual en el Excel o en el Word."
+	3 | Capacitación recibida
+¿Has recibido algún tipo de capacitación para usar las herramientas digitales?
+¿Crees que esa capacitación fue suficiente?
+	* "Al ser un emprendimiento propio, casi todo ha sido autoaprendizaje. He tenido que aprender sobre la marcha a configurar las campañas en Meta o a ordenar las planillas. Siento que hace falta dar el salto a un sistema real porque el esfuerzo de aprender sola llega hasta el límite de lo que el Excel permite hacer."
+	4 |Propuestas de mejora
+¿Qué cambios harías para mejorar el uso de herramientas digitales en tu trabajo?
+¿Sientes que podrías aportar ideas para optimizar procesos?
+	* "Lo primero sería implementar la página web que tenemos proyectada y un sistema de punto de venta (POS) para el local. La idea es que todo esté conectado: si vendo algo presencial o por redes sociales, que el inventario y los precios se actualicen solos en un solo lugar para no hacer doble trabajo."
+	5 |Percepción sobre los cambios digitales
+¿Cómo percibes los cambios digitales que se han implementado en la empresa?
+¿Te sientes apoyado en esos procesos de cambio?
+	* "Los cambios que hemos hecho, como integrar pagos con tarjeta o invertir en publicidad en Meta, han sido súper buenos para atraer clientes. Eso me motiva, pero al mismo tiempo hace más evidente que nuestra administración interna se quedó atrás. Hay total disposición para digitalizarnos más."
+	6 |Ejemplos de procesos manuales aún vigentes
+¿Qué tareas siguen siendo manuales y podrían digitalizarse?
+¿Por qué crees que aún no se han digitalizado?
+	* "Armar los catálogos pegando fotos en Word y tener que tipear cada venta en el Excel al final del día son procesos totalmente manuales que ya deberían estar automatizados. Aún no se digitalizan al 100% porque estamos enfocados en el local físico y armar el e-commerce toma tiempo y requiere superar ciertas barreras técnicas."
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pauta de entrevista en profundidad a Cliente
+Nombre: Pablo Hernandez
+Edad: 36
+Ocupación: Cliente frecuente
+	Medio de registro: Presencial
+Fecha: 10/04/2026
+Duración: 15 minutos
+	
+
+Temáticas
+	Citas clave
+	1 | Perfil y comportamiento digital del comprador
+¿Dónde sueles buscar productos como los que ofrece “Babyviip
+¿Qué plataformas o redes sociales utilizas más para este tipo de compras?
+	* "En el mall o en grandes tiendas por departamento puedo encontrar ropa de bebé.
+* "Usualmente voy presencialmente, o a veces vitrineo por Instagram o directamente en la tienda de Baby VIIP.
+
+
+	2 |Necesidades insatisfechas
+¿Qué dificultades has tenido al buscar productos similares en otras tiendas?
+¿Qué aspectos te gustaría que mejoraran en una tienda de este tipo?
+	* "A veces cuesta encontrar buena calidad en el algodón si lo comparo con tiendas especializadas como esta."
+*  "La falta de diseños originales o que siempre se agotan rápido las tallas más buscadas en las tiendas grandes.
+	3 |Percepción de la marca / Factores de decisión de compra
+¿Qué te influye más al momento de elegir una tienda (precio, atención, diseño del sitio, rapidez)?
+¿Qué imagen te transmite una tienda como “Babyviip” al verla por primera vez en línea o presencial?
+	* "Siento que un poco de todo, pero más que nada la calidad de las telas para el bebé y la buena atención del lugar."
+* "Me transmite ser un lugar confiable, agradable y seguro para comprar ropa linda para mi hijo."
+	
+
+
+
+
+
+Pauta de entrevista en profundidad a Cliente
+Nombre: Camila Rojas
+Edad: 28
+Ocupación: Administrativa y madre de un niño de 1 año
+	Medio de registro: Presencial
+Fecha: 10/04/2026
+Duración: 10 minutos
+	
+
+Temáticas
+	Citas clave
+	1 | Perfil y comportamiento digital del comprador
+
+
+¿Dónde sueles buscar productos como los que ofrece “Babyviip”?
+
+
+¿Qué plataformas o redes sociales utilizas más para este tipo de compras?
+	* Normalmente empiezo a vitrinear desde el celular cuando tengo un rato libre. Uso casi puro Instagram para ver las fotos de la ropita, y de ahí salto a WhatsApp si quiero preguntar si tienen stock para comprar
+
+
+	2 |Necesidades insatisfechas
+
+
+¿Qué dificultades has tenido al buscar productos similares en otras tiendas?
+
+
+¿Qué herramienta o función crees que le falta a la mayoría de estas tiendas para hacerte la vida más fácil?
+	* El mayor problema, sobre todo cuando le intento comprar a pymes o emprendimientos por redes sociales, es que la información de las tallas y precios casi nunca está actualizada o no lo mencionan a veces. Entiendo que no son grandes tiendas de mall, pero creo que a la mayoría de estos negocios chicos les falta implementar al menos un catálogo automático en WhatsApp o una página web súper básica para poder ver el stock real, y así no tener que andar preguntando todo por mensaje.
+	3 |Percepción de la marca / Factores de decisión de compra
+
+
+¿Qué detalles específicos en las redes sociales de una tienda te generan la confianza suficiente para hacerles una transferencia?
+
+
+Si tuvieras que describir la imagen que proyecta Babyviip basándote solo en lo que ves, ¿qué palabras usarías?
+	* Para atreverme a hacer una transferencia a un negocio por internet, me fijo más que nada en que tengan su cuenta activa, que suban historias seguido y que respondan dudas en los comentarios. Sobre Babyviip, mirándolo así por encima, la imagen que proyectan es de un local 'surtido' y 'tradicional'. Se nota que tienen harta variedad de ropa, aunque siempre prefiero ir a tocar las telas en persona antes de hacerme una idea definitiva.
+	Cuestionario de preguntas a Usuario
+Entrevista al Jefe (Gerente de Babyviip)
+	Entrevista a Empleado (Mesera de Babyviip)
+	Entrevista al Cliente (Usuario de Babyviip)
+	¿Cómo describiría la visión digital actual de la empresa?
+
+¿Qué papel juega la tecnología en la estrategia general del negocio?
+
+¿Qué herramientas digitales utilizan actualmente en la empresa?
+
+¿Hay procesos que ya están automatizados?
+
+¿Qué cambios digitales han sido implementados anteriormente?
+
+¿Cómo fue la experiencia general en cuanto a adopción y resultados?
+
+¿Cuáles han sido los principales obstáculos al implementar nuevas tecnologías?
+
+¿Cómo se han abordado estos desafíos?
+
+¿Qué necesidades tecnológicas cree que deben ser cubiertas en el corto o mediano plazo?
+
+¿Existen planes para futuras inversiones en digitalización?
+
+¿Cómo describiría la disposición del equipo a adoptar nuevas tecnologías?
+
+¿Se promueve la capacitación digital dentro de la empresa?
+
+
+	¿Qué tipo de herramientas digitales forman parte de tus tareas diarias en “Babyviip”?
+
+
+¿Para qué tareas usas estas herramientas?
+
+
+¿Has notado alguna dificultad al usar herramientas digitales en tu área?
+
+
+¿Hay alguna herramienta que consideres poco eficiente?
+
+
+¿Has recibido algún tipo de capacitación para usar las herramientas digitales?
+
+
+¿Crees que esa capacitación fue suficiente?
+
+
+¿Qué cambios harías para mejorar el uso de herramientas digitales en tu trabajo?
+
+
+¿Sientes que podrías aportar ideas para optimizar procesos?
+
+
+¿Cómo percibes los cambios digitales que se han implementado en la empresa?
+
+
+¿Te sientes apoyado en esos procesos de cambio?
+
+
+¿Qué tareas siguen siendo manuales y podrían digitalizarse?
+
+
+¿Por qué crees que aún no se han digitalizado?
+
+
+
+
+	
+
+¿Dónde sueles buscar productos como los que ofrece “Babyviip”?
+
+
+¿Qué plataformas o redes sociales utilizas más para este tipo de compras?
+
+
+¿Qué dificultades has tenido al buscar productos similares en otras tiendas?
+
+
+¿Qué herramienta o función crees que le falta a la mayoría de estas tiendas para hacerte la vida más fácil?
+
+
+¿Qué detalles específicos en las redes sociales de una tienda te generan la confianza suficiente para hacerles una transferencia?
+
+
+Si tuvieras que describir la imagen que proyecta Babyviip basándote solo en lo que ves, ¿qué palabras usarías?
+	Preparación de pauta de observación no participante
+Objetivo general de la investigación: Analizar el funcionamiento del proceso de atención, uso de herramientas digitales y comportamiento de clientes en la tienda Babyviip, con el fin de identificar oportunidades de mejora en la integración digital y experiencia de compra.
+	
+
+Objetivos específicos
+	A observar
+	Información que se busca
+	Formato de registro
+	1 |
+	Interacción entre empleados y clientes
+	Flujo de atención en tienda, rapidez del servicio y forma en que se realiza la atención al cliente
+	Registro de tiempos de atención y notas sobre la interacción (si es fluida, rápida, clara)
+
+
+	2 |
+	Uso de herramientas digitales internas
+	Uso de dispositivos como computador, notebook y sistema de pago (Transbank) en el proceso de venta
+	Lista de herramientas observadas y notas sobre su uso (fluido, manual, con dificultades)
+	3 |
+	Dinámica del espacio físico
+	Organización del local, distribución de productos en perchas, facilidad de desplazamiento del cliente
+	Descripción del espacio, orden, limpieza y comodidad del entorno
+	4 |
+	Elementos de comunicación y marketing
+	Presencia de redes sociales en el local (folletos, tarjetas, contacto) y uso de estos para atraer clientes
+	Registro de materiales visibles (tarjetas, redes sociales) y cómo se comunican con clientes
+	5 |
+	Participación del cliente en canales digitales
+	Uso de redes sociales por parte de clientes (consultas, compras online, retiro en tienda)
+	Notas sobre comportamiento del cliente respecto a redes sociales y consultas digitales
+	6 |
+	Problemas de comunicación o desconexión digital
+	Situaciones donde hay falta de información actualizada, errores en stock o confusión en atención
+	Registro de casos donde se observe desinformación o dificultades en el proceso
+	7 |
+	Actitud del personal frente a lo digital
+	Disposición del personal al uso de herramientas digitales y manejo de procesos manuales
+	Observación del comportamiento, seguridad en uso de herramientas y lenguaje utilizado
+	Punto de contacto: Gran avenida 5234 , local 17
+Tel.: +56927493733 - Comuna San miguel
+	Descripción general: Escaparate con ropa de bebe, tienda amplia y decorada, flujo de gente apariencia normal.
+
+
+	Pauta de observación no participante AEIOU
+Actividades: En la tienda se observa un flujo constante de clientes, aproximadamente entre 3 a 4 personas entrando y saliendo de manera continua. Los usuarios ingresan, recorren el espacio, observan los productos y, en algunos casos, realizan compras. La experiencia combina tanto la compra directa como la exploración de productos. Además, se identifican actividades asociadas a la compra mediante redes sociales, donde los clientes pueden adquirir productos de forma digital y luego retirarlos o recibirlos por envío. La compra en el local se percibe rápida y eficiente.
+	Entornos: El entorno del local se percibe ordenado y funcional. La tienda no se encuentra saturada de personas, manteniendo un nivel de ocupación regular, lo que facilita el desplazamiento dentro del espacio. En términos de productos, el lugar se percibe lleno, con una adecuada organización en perchas y exhibidores. El ambiente es tranquilo y permite una experiencia de compra cómoda.
+	Interacciones: Existe una interacción constante entre el encargado del local y los clientes, asegurando atención continua durante toda la jornada. No se observan otros roles como guardias, solo personal del lugar. La atención es rápida y sin inconvenientes, facilitando el proceso de compra. Además, hay interacción indirecta a través de redes sociales, donde se gestionan ventas digitales. La comunicación con los clientes también se apoya mediante folletos y tarjetas con información de contacto.
+	Objetos: Dentro del local se observan distintos elementos funcionales como un PC, un notebook y dispositivos asociados al proceso de pago. Los productos se encuentran organizados principalmente en perchas, evidenciando orden y fácil acceso para los clientes. También se identifican materiales informativos como folletos y tarjetas de presentación que incluyen redes sociales y datos de contacto del negocio.
+
+
+
+
+  
+             
+
+
+  
+                    
+
+
+	Usuarios: El público de la tienda está compuesto principalmente por mujeres y parejas, abarcando distintos rangos etarios. Se observan tanto clientes que compran como otros que solo recorren y observan los productos. Los usuarios muestran comportamientos variados: algunos ingresan con intención de compra clara, mientras otros exploran el espacio. En general, el flujo de clientes es constante y diverso. Además  se visualiza a la dueña y empleada del local  trabajando.
+	
+
+
+
+________________
+
+
+Entrevista a expertos
+Objetivo general:
+	Preparación de la entrevista a experto
+	Objetivo específico
+	Experto
+	Información
+que se busca
+	Formato de
+entrevista
+	Identificar buenas prácticas en el uso de tecnologías para la gestión, venta y personalización de productos en pymes
+	Experta en venta de productos personalizados (poleras, tazas, botellas, rompecabezas, etc.) y desarrollo de pymes con presencia en página web y redes sociales
+	Conocer qué herramientas digitales utiliza para gestionar inventario, ventas y personalización; cómo integra canales online y físicos; y qué estrategias aplica para innovar y escalar su negocio
+	Entrevista presencial
+	Analizar los riesgos de la gestión manual y los beneficios de la integración de sistemas POS en el sector retail
+	Consultora en Transformación Digital para PYMES con 10 años de experiencia
+	Identificar puntos de falla en modelos basados en Excel, impacto de la desincronización de stock en la confianza del cliente y ventajas de la automatización operativa
+	Entrevista presencial (grabada por audio y transcripción escrita)
+	
+
+Pauta de entrevista Expertas
+	Nombre: Deisy Fuenzalida
+Edad: 42
+Ocupación: Emprendedora (venta de productos personalizados)
+Tiempo en el cargo: 5 años (aprox.)
+Relación con el  servicio: Experta
+	Medio de registro:
+Presencial, grabado por audio y escrito textual
+Fecha de registro: 11/04/2026
+Duración: 35 minutos
+	Temáticas
+	Citas claves
+	“En tu experiencia vendiendo productos personalizados, ¿qué herramientas o sistemas utilizas para integrar las ventas (presenciales y online) con el control de inventario y precios en tiempo real?”
+	* “Hago un estudio de mercado en Facebook, Instagram y en internet.”
+* “Trabajo con una tabla donde pongo el valor del producto, lo que me cuesta, el tiempo… y después el precio final.”
+* “Sí, uso un Excel.”
+La entrevistada utiliza herramientas básicas como Excel y redes sociales para la fijación de precios, lo que evidencia una gestión manual, pero funcional en etapas iniciales del emprendimiento.
+	“¿Qué recomendarías priorizar al momento de dar el salto a un e-commerce: página web propia, marketplace o fortalecer redes sociales, y por qué?”
+	* “Es importante que puedan visualizarte y tener más ventas.”
+* “Que conozcan lo que haces y el valor que le agregas al producto.”
+* “Yo partí vendiendo por Facebook… después creé Instagram.”
+* “Tengo más clientes por redes sociales y por recomendación.”
+* “La página web no se usa tanto, me cuesta más.”
+Se evidencia que las redes sociales son el principal canal de venta y posicionamiento, siendo más efectivas que una página web en etapas iniciales.
+	“¿Qué procesos consideras clave automatizar primero en un emprendimiento como este para mejorar tanto la gestión interna como la experiencia del cliente?”
+	* “Comunicación efectiva.”
+* “Detección de oportunidades.”
+* “Tener respuestas claras según lo que el cliente necesita para cerrar la venta rápido.”
+* “No perder tiempo en detalles.”
+* “La canalización de clientes y cierre de ventas.”
+* “Automatizar procesos productivos para que sea más rápido.”
+* “Hay cosas que ya tengo automatizadas y otras que son más lentas.”
+* “Uso varias impresoras al mismo tiempo para optimizar el trabajo.”
+
+
+	
+
+
+
+
+
+
+
+Pauta de entrevista Expertas
+	Nombre: María López Rivas
+Edad: 45
+Ocupación: Consultora en Transformación Digital para PYMEs
+Tiempo en el cargo: 10 años
+Relación con el servicio: Experta externa en digitalización de negocios minoristas
+	Medio de registro: Presencial, grabado por audio y transcripción escrita
+Fecha de registro: 11/02/2026
+Duración: 30 minutos
+	Temáticas
+	Citas claves
+	Nivel de digitalización en PYMEs
+	“Muchas PYMEs comienzan utilizando herramientas básicas como Excel y redes sociales, pero llega un punto donde ese modelo colapsa si no se integran sistemas más robustos.”
+	Problemas comunes en gestión manual
+	“El principal problema de trabajar con planillas es la desactualización del stock en tiempo real, lo que genera errores en ventas y pérdida de confianza del cliente.”
+	Importancia de un sistema integrado
+	“Un sistema de punto de venta conectado al inventario permite automatizar procesos clave, reducir errores humanos y mejorar la eficiencia operativa.”
+	
+
+Cuestionario de preguntas Expertas
+
+
+	Entrevista Expertas: Deisy Fuenzalida
+	Entrevista Expertos María López Riva
+	“En tu experiencia vendiendo productos personalizados, ¿qué herramientas o sistemas utilizas para integrar las ventas (presenciales y online) con el control de inventario y precios en tiempo real?”
+
+
+“¿Qué recomendarías priorizar al momento de dar el salto a un e-commerce: página web propia, marketplace o fortalecer redes sociales, y por qué?”
+
+
+“¿Qué procesos consideras clave automatizar primero en un emprendimiento como este para mejorar tanto la gestión interna como la experiencia del cliente?”
+	Nivel de digitalización en PYMEs
+
+
+Problemas comunes en gestión manual
+
+
+Importancia de un sistema integrado
+
+
+
+
+	
+
+Hallazgos
+Matriz de validación de Hallazgos
+Tópico A: 
+Temática A: Cultura digital interna / disposición.
+1. “Existe una total disposición para adoptar nuevas tecnologías, ya que somos conscientes de que los procesos manuales actuales nos limitan.” (Cita clave entrevista dueña)
+2. “Al manejar diariamente campañas en Meta y cobros digitales, el equipo ya tiene una base sólida.” (Cita clave entrevista dueña)
+3. “He tenido que aprender sobre la marcha a configurar las campañas en Meta o a ordenar las planillas.” (Cita clave entrevista empleado)
+4. “Hay total disposición para digitalizarnos más.” (Cita clave entrevista empleado)
+5. “Muchas PYMEs comienzan utilizando herramientas básicas como Excel y redes sociales, pero llega un punto donde ese modelo colapsa si no se integran sistemas más robustos.” (Cita clave entrevista experta)         
+Tópico A: 
+Temática B: Percepción cliente / canales digitales.        
+6. “Usualmente voy presencialmente, o a veces vitrineo por Instagram o directamente en la tienda.” (Cita clave entrevista usuario)
+7. “Uso casi puro Instagram para ver las fotos y de ahí salto a WhatsApp si quiero preguntar si tienen stock.”(Cita clave entrevista usuario) 
+8. “Prefiero ir a tocar las telas en persona antes de hacerme una idea definitiva.”(Cita clave entrevista usuario) 
+9. “Siento que un poco de todo, pero más que nada la calidad de las telas y la buena atención del lugar.” (Cita clave entrevista usuario) 
+10. “La información de las tallas y precios casi nunca está actualizada.” (Cita clave entrevista usuario) 
+11. “En la tienda se observa un flujo constante de clientes, aproximadamente entre 3 a 4 personas entrando y saliendo de manera continua.” (Observador no participante)
+12. “La compra en el local se percibe rápida y eficiente.” (Observador no participante)
+
+
+
+
+
+
+
+
+Tópico B: 
+Temática A: Herramientas digitales internas y procesos técnicos.
+13. “La gestión interna se maneja netamente con planillas Excel y documentos Word.” (Cita clave entrevista dueña)
+14. “Para los cobros en el local físico utilizamos la máquina Transbank de Banco Estado.”  (clave entrevista dueña)
+15. “Armo los catálogos en Word y trato de llevar la contabilidad y el stock en planillas de Excel.” (Cita clave entrevista empleado)
+16. “La planilla no me cuadra con las prendas que realmente hay en la tienda.” (Cita clave entrevista empleado)
+17. “Me cuesta mucho tiempo encontrar rápido un producto específico o el precio actualizado.” (Cita clave entrevista empleado)
+18. “Tener que tipear cada venta en el Excel al final del día son procesos totalmente manuales.” (Cita clave entrevista empleado)
+19. “El principal problema de trabajar con planillas es la desactualización del stock en tiempo real, lo que genera errores en ventas y pérdida de confianza del cliente.” (Cita clave entrevista experta)
+20. “El principal problema de trabajar con planillas es la desactualización del stock en tiempo real, lo que genera errores en ventas y pérdida de confianza del cliente.” (Cita clave entrevista experta)
+21. “Dentro del local se observan distintos elementos funcionales como un PC, un notebook y dispositivos asociados al proceso de pago.” (Observador no participante)
+Tópico B: 
+Temática B: Canales de contacto digital y competencia percibida
+22. “Nuestra comunicación y ventas digitales dependen del ecosistema de Meta (Instagram, Facebook y WhatsApp Business).” (Cita clave entrevista experta – dueña)
+23. “La tecnología funciona como nuestra gran vitrina virtual.” (Cita clave entrevista experta – dueña)
+24. “Necesitamos un sistema de punto de venta y catálogo digital que centralice y automatice nuestro inventario y precios.” (Cita clave entrevista experta – dueña)
+25. “Falta implementar al menos un catálogo automático en WhatsApp o una página web básica para ver el stock real.” (Cita clave entrevista usuario)
+26. “Si vendo algo presencial o por redes sociales, que el inventario y los precios se actualicen solos.” (Cita clave entrevista empleado)
+27. ““Es importante que puedan visualizarte y tener más ventas..” (Cita clave entrevista experta)
+28. “Yo partí vendiendo por Facebook… después creé Instagram.” (Cita clave entrevista experta)
+29. “La página web no se usa tanto, me cuesta más.” (Cita clave entrevista experta)
+30. “Además, hay interacción indirecta a través de redes sociales, donde se gestionan ventas digitales.”(Observador no participante)
+31. “La comunicación con los clientes también se apoya mediante folletos y tarjetas con información de contacto.”(Observador no participante)
+
+
+(Cita clave entrevista dueña) Se refiere a la entrevista con la dueña del local.
+(Cita clave entrevista empleado) Se refiere a la entrevista con la empleada del local.
+Cita clave entrevista usuario) Se refiere a la entrevista realizada al cliente
+(Cita clave entrevista experta) se refiere a la entrevista con expertas externas.
+(Observador no participante) Se refiere a las observaciones no participantes realizadas.
+________________
+
+
+Matriz de categorización de insights
+
+
+	INSIGHT 1
+	INSIGHT 2
+	INSIGHT 3
+	INSIGHT 4
+	Insight:
+	Alta disposición al cambio digital
+	Dependencia de redes sociales como canal principal
+	Gestión interna manual genera ineficiencia
+	Falta de integración digital afecta experiencia cliente
+	Descripción:
+	La empresa muestra apertura a incorporar nuevas tecnologías, motivada por las limitaciones de los procesos manuales actuales.
+	Las redes sociales funcionan como principal canal de venta y comunicación, reemplazando otros canales más estructurados como e-commerce.
+	El uso de herramientas como Excel y Word provoca errores en inventario, lentitud en la atención y desorganización operativa.
+	La ausencia de sistemas integrados genera problemas como desactualización de stock y precios, afectando la confianza y experiencia del cliente.
+	Reflexiones / Citas clave:
+	“Existe una total disposición para adoptar nuevas tecnologías…”
+
+
+“Los procesos manuales actuales nos limitan.”
+
+
+“Hay total disposición para digitalizarnos más.”
+
+
+“Muchas PYMEs… colapsan si no integran sistemas más robustos.”
+	“Nuestra comunicación y ventas digitales dependen del ecosistema de Meta…”
+
+
+“Uso casi puro Instagram…”
+“Vitrineo por 
+Instagram…”
+
+
+“La tecnología funciona como nuestra gran vitrina virtual.”
+	“La gestión interna se maneja netamente con planillas Excel y Word.”
+
+
+“La planilla no me cuadra…”
+
+
+“Me cuesta mucho tiempo encontrar productos.”
+
+
+“Procesos totalmente manuales.”
+“Desactualización del stock en tiempo real…”
+	“La información de tallas y precios casi nunca está actualizada.”
+“Falta catálogo automático o página web…”
+“El stock no siempre cuadra.”
+“Errores en ventas y pérdida de confianza del cliente.”
+	
+
+
+
+
+
+
+
+
+
+MAPA DE CATEGORIZACIÓN DE INSIGHTS (BABYVIIP)
+	Categoría
+	Insight clave
+	Cultura organizacional
+	Existe una alta disposición al cambio digital dentro del equipo, lo que facilita la adopción de nuevas tecnologías.
+	Comunicación y marketing digital
+	La empresa presenta una alta dependencia de redes sociales como principal canal de venta y comunicación.
+	Gestión interna / usuario interno
+	La gestión interna manual basada en Excel y Word genera ineficiencias, errores y pérdida de tiempo en la operación diaria.
+	Experiencia del cliente externo
+	La falta de integración digital provoca desactualización de información, afectando la experiencia y confianza del cliente.
+	
+
+TABLA DE PRIORIZACIÓN DE INSIGHTS (BABYVIIP)
+	Insight
+	Impacto
+	Complejidad
+	Justificación
+	Implementar sistema POS con inventario automatizado
+	Alto
+	Medio
+	Resuelve el "dolor" principal: el descuadre entre planillas Excel y el stock real en tienda. Elimina la necesidad de "tipear" ventas manualmente al final del día.
+	Desarrollar E-commerce o catálogo digital sincronizado
+	Alto
+	Alto
+	Permite que el negocio escale más allá de Meta (Instagram/WhatsApp). Evita que el cliente dependa de mensajes manuales para conocer precios y tallas.
+	Automatizar atención al cliente y flujo de información
+	Alto
+	Medio
+	Ataca la frustración del usuario por la desactualización de la información digital. Mejora la confianza del cliente mediante respuestas rápidas y certeras.
+	Programa de capacitación técnica y digital del equipo
+	Medio
+	Bajo
+	Aprovecha la base sólida y la voluntad del equipo (dueña y empleado) para adoptar herramientas más robustas que el Excel.
+	Mantener y potenciar la experiencia de compra presencial
+	Medio
+	Bajo
+	El cliente valora "tocar las telas" y la calidez de la atención. La tecnología debe apoyar este valor diferenciador, no reemplazarlo.
+	Redefinición del desafío
+A partir del análisis de los hallazgos obtenidos mediante entrevistas, observación no participante y revisión de antecedentes, se redefine el desafío inicial del proyecto.
+El desafío consiste en cómo una pyme del rubro retail, como Babyviip, puede integrar sus procesos de venta, inventario y atención al cliente mediante herramientas digitales, con el fin de mejorar la eficiencia operativa, reducir errores en el manejo del stock y optimizar la experiencia del cliente, manteniendo al mismo tiempo su valor diferenciador basado en la atención personalizada.
+Este desafío surge a partir de problemáticas identificadas como la desactualización del stock, la dependencia de procesos manuales y la falta de integración entre canales digitales y físicos.
+Ficha de antecedentes – Babyviip
+Nombre: Estrategia de Venta Online y E-commerce.
+	Imagen:   
+
+
+	Variables: Escalabilidad del modelo de negocio y madurez digital comercial.
+
+
+	Descripción:Actualmente, la empresa opera sin una plataforma transaccional propia, centralizando su actividad digital en la interacción directa por redes sociales, lo que complementa la venta tradicional en el local físico.
+
+
+	Aspectos resueltos: Se ha logrado establecer una presencia digital efectiva mediante redes sociales, utilizándolas como una vitrina dinámica para atraer público y mantener contacto con los clientes.
+	Aspectos por resolver: Es necesaria la implementación de una arquitectura digital que unifique la gestión de pedidos, los sistemas de pago y el control de existencias en un solo lugar.
+
+
+
+
+	Fuente: https://www.shopify.com/cl y datos obtenidos mediante entrevistas directas con la propietaria y el personal de contabilidad.S
+ 
+	
+
+Nombre: Protocolo de Interacción y Atención al Cliente.
+	Imagen:  
+
+
+	Variables: Productividad del talento humano y eficiencia en canales de comunicación.
+	Descripción: El modelo de atención de la tienda es híbrido (físico y digital), donde la resolución de dudas y la toma de pedidos se gestionan individualmente por el equipo, sin apoyo tecnológico para tareas repetitivas.
+
+
+	Aspectos resueltos: Se destaca un servicio al cliente cálido y humanizado, junto con un manejo proactivo de perfiles comerciales en Instagram y WhatsApp Business.
+
+
+	Aspectos por resolver: Se requiere mitigar la dependencia absoluta del tiempo del personal mediante la integración de sistemas que faciliten el flujo de información y el rastreo sistemático de los pedidos.
+
+
+	Fuente:https://business.whatsapp.com/ y hallazgos obtenidos mediante observación directa en el local y entrevistas al equipo de trabajo.
+
+
+	________________
+
+
+
+
+Nombre: Control de Existencias e Inventario Operativo.
+	Imagen:  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	Variables: Integridad de la información y agilidad en procesos de bodega.
+
+
+
+
+
+
+
+
+
+
+
+
+	Descripción: El seguimiento de los artículos se realiza a través de herramientas manuales como hojas de cálculo y catálogos estáticos, lo cual deriva en discrepancias frecuentes entre el stock real y el registrado.
+
+
+	Aspectos resueltos: Se ha establecido un registro fundamental para identificar los productos disponibles y llevar el historial de las transacciones comerciales.
+
+
+	Aspectos por resolver: Es indispensable adoptar una solución tecnológica que automatice la actualización del inventario en cada venta para evitar el descuadre manual de mercadería.
+
+
+
+
+	Fuente: https://www.lightspeedhq.com, https://www.zoho.com/inventory/ y consultas realizadas directamente a la dueña y a la asistente administrativa de la empresa.
+ 
+	________________
+Matriz de antecedentes – Babyviip
+Casos
+	Variable 1: Escalabilidad del modelo
+	Variable 2: Nivel de automatización
+	Variable 3: Integración de procesos
+	Variable 4: Experiencia del cliente
+	Variable 5: Eficiencia operativa
+	Caso 1: Estrategia de Venta Online y E-commerce  
+
+
+	Requiere desarrollo o implementación de plataforma, nivel medio de dificultad
+	Alta, automatiza ventas, pagos y catálogo
+	Alto, centraliza la gestión comercial
+	Alto, cliente accede a información en tiempo real
+	Alta, permite crecimiento del negocio
+	Caso 2: Protocolo de Interacción y Atención al Cliente (automatizado)
+  
+
+	Fácil de implementar con herramientas como WhatsApp Business o chatbots
+	Media, automatiza respuestas y flujo de atención
+	Medio, mejora organización pero no integra todo el sistema
+	Alto, respuestas más rápidas y claras
+	Media, depende de integración con otros sistemas
+	Caso 3: Control de Inventario automatizado (POS)
+  
+
+	Implementación media (requiere sistema y capacitación)
+	Alta, actualización automática de stock
+	Alto, elimina errores y mejora control interno
+	Alto, evita problemas de disponibilidad
+	Alta, permite operar a mayor escala
+	
+
+
+
+
+
+________________
+Conclusión
+A través del presente informe, se evidenció que la empresa Babyviip ha iniciado un proceso de transformación digital de carácter progresivo y adaptativo, en el cual el liderazgo ha desempeñado un rol clave en la incorporación de herramientas tecnológicas, pese a la existencia de ciertas barreras iniciales asociadas a la experiencia y formación digital. Asimismo, el equipo de trabajo ha demostrado una alta disposición al cambio, lo que constituye una base favorable para la implementación de nuevas soluciones, siempre que estas vayan acompañadas de orientación y capacitación adecuada.
+Si bien la empresa presenta avances relevantes, como el uso estratégico de redes sociales para la captación de clientes y la incorporación de medios de pago digitales, persisten brechas importantes en la gestión interna. En particular, la dependencia de herramientas manuales como Excel y Word genera ineficiencias operativas, errores en el control de inventario y dificultades para mantener información actualizada en tiempo real. A esto se suma la ausencia de una estrategia digital integrada que articule de manera eficiente los distintos canales de venta y comunicación..
+Por otra parte, el análisis del comportamiento del cliente evidencia una valoración significativa de la experiencia presencial, especialmente en lo relacionado con la confianza, la atención personalizada y la posibilidad de interactuar directamente con los productos. Este aspecto representa una ventaja competitiva para la empresa, pero también plantea el desafío de integrar soluciones digitales sin perder la cercanía y calidad del servicio.
+En este contexto, se concluye que Babyviip se encuentra en una etapa intermedia de madurez digital. Para avanzar hacia una transformación digital efectiva, será fundamental implementar sistemas integrados como un punto de venta (POS) conectado al inventario, desarrollar un canal de e-commerce o catálogo digital sincronizado, y fortalecer la automatización de procesos clave. Estas acciones permitirán optimizar la gestión operativa, mejorar la experiencia del cliente y potenciar el posicionamiento de la empresa en un mercado cada vez más digitalizado.
+
+
+
+
+
+
+
+
+________________
+
+
+Bibliografía
+Shopify Inc. (s.f.). Plataforma de comercio electrónico. https://www.shopify.com
+Lightspeed Commerce Inc. (s.f.). Retail POS system. https://www.lightspeedhq.com
+Zoho Corporation. (s.f.). Zoho Inventory. https://www.zoho.com/inventory/
+WhatsApp Inc. (s.f.). WhatsApp Business. https://business.whatsapp.com
+________________
+
+
+Anexos
+“Información de contacto y referencias de Babyviip”
+Referencia de la página de Instagram
+Babyviip [@babyviipcl]. (s.f.).  [Perfil de Instagram]. Instagram. Recuperado el 13 de abril de 2026, de https://www.instagram.com/babyviipcl/
+Referencia de la página de Facebook
+Babyviip. (s.f.).  [Página de Facebook]. Facebook. Recuperado el 13 de abril de 2026, de https://www.facebook.com/groups/1362338867173654/user/61587245798428/
+Datos del Local
+Dirección: Gran Avenida 5234, local 17 (Babyviip, s.f.).
+Mapa: https://share.google/C6HMTq54TXQDafIMq
+Teléfono de contacto: 927493733 (Babyviip, s.f.).

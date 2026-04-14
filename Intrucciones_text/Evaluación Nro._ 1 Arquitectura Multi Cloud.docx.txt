@@ -1,0 +1,515 @@
+﻿C:\Users\dupre_000\Downloads\Sin título-1-01.jpg 
+
+
+
+
+
+
+
+Evaluación Nro.: 1 Arquitectura Multi Cloud 
+Empresa Babyviip
+Venta de Ropa de bebe recién nacidos hasta 3 años.
+
+
+
+
+
+
+NOMBRE: Diego Díaz, Víctor Gangas, Aron Barrientos, Fernando Pizarro, Paola Pereira
+CARRERA: Ingenieria en informatica
+ASIGNATURA: Arquitectura Multi Cloud
+PROFESOR: Roberto fica
+FECHA: 14/04/2025  
+Índice
+Introducción……………………………………………………………………………………….3
+Desarrollo (Entrevista)…………………………………………………………………………..4-15
+Entrevista a Usuario……………………………………………………………………………..4-9
+Cuestionario………………………………………………………………………………………10
+Observación no participante…………………………………………………………………….11-14
+Hallazgos………………………………………………………………………………………….15-17
+Conclusión…………………………………………………………………………………………18
+Links e información de contacto de la tienda  Babyviip………………………..…………………19
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1. Introducción
+Baby VIIP nace como un proyecto familiar enfocado en vestir a los más pequeños en Chile, operando actualmente con la cercanía y calidez del trato directo en su local físico. Sin embargo, detrás de cada venta y cada prenda, existe una gestión que hoy depende principalmente de herramientas manuales como archivos de Excel y documentos de Word. Si bien estas herramientas han sido fundamentales en su etapa inicial, el objetivo de expandirse hacia una tienda digital y profesionalizar la operación exige dar un salto cualitativo en términos tecnológicos.
+Este informe no busca únicamente la implementación de software, sino la construcción de un “corazón digital” mediante el uso de Cloud Computing. El propósito es que procesos críticos como la contabilidad, la gestión de inventario, los catálogos y la futura plataforma de ventas dejen de depender de un solo equipo físico, pasando a estar disponibles, protegidos y sincronizados en la nube en todo momento.
+A través de la plataforma Microsoft Azure, se diseña una propuesta de arquitectura tecnológica basada en infraestructura virtual con sistema operativo Ubuntu Server y servicios escalables, que permitirá a la empresa crecer de manera segura y sostenible. Esta solución contempla el resguardo de la información bajo estándares internacionales de seguridad, como la norma ISO 27002, junto con la implementación de herramientas que faciliten el trabajo diario del equipo.
+De esta forma, la tecnología se posiciona como un aliado estratégico que no solo optimiza los procesos internos, sino que también permite a Baby VIIP evolucionar desde un negocio local hacia una marca con presencia digital, mayor alcance comercial y una operación moderna, eficiente y confiable.
+Datos de la Empresa
+	Nombre: BabyViipcl
+	Rubro: Comercio — Venta de ropa y accesorios para bebés (0 a 3 años)
+	Estado TI actual: Sin presencia web, sin sistemas informáticos
+	Medios de pago actuales: Efectivo y Transbank
+	Herramientas actuales: Planillas Word y Excel
+	Objetivo: Migración completa a infraestructura Cloud Computing en Azure
+	Links e información de contacto de la tienda:
+	Redes sociales 
+Instagram : babyviipcl
+Facebook : babyviipcl
+Teléfono contacto: 927493733
+Whatsapp: +56927493733
+Correo : babyviip8@gmail.com
+Dirección : Gran Avenida 5234, local 17, San Miguel
+	2. Desarrollo
+2.1 Propuesta para el sistema Cloud Computing
+Para responder a las necesidades de crecimiento, escalabilidad y modernización de la empresa Babyviip, se propone la implementación de una arquitectura de Cloud Computing basada en Microsoft Azure, utilizando infraestructura virtual sobre sistema operativo Linux (Ubuntu Server 24.04 LTS), junto con tecnologías de desarrollo backend como Django y contenedores Docker.
+
+
+Esta propuesta se fundamenta en los hallazgos obtenidos durante el proceso de investigación, donde se evidenció una alta dependencia de herramientas manuales como Excel y Word para la gestión del inventario, contabilidad y catálogos de productos, lo que genera ineficiencias operativas, errores en el control de stock y dificultades en la atención al cliente.
+
+
+En este contexto, la solución propuesta busca centralizar y automatizar los procesos críticos del negocio mediante una arquitectura en capas, permitiendo la integración de los canales de venta físicos y digitales en una única plataforma tecnológica.
+
+
+Capa de Presentación: Tienda en Línea
+
+
+Se implementará una página web de comercio electrónico enfocada en la venta de ropa y accesorios para bebés (desde recién nacidos hasta los 3 años), accesible desde dispositivos móviles y de escritorio. Esta plataforma permitirá a los clientes visualizar el catálogo de productos de manera clara y ordenada, incluyendo información relevante como tallas, precios, materiales y disponibilidad en tiempo real.
+
+
+La página web incorporará funcionalidades como carrito de compras, registro de usuarios, gestión de pedidos y pagos digitales mediante pasarelas como WebPay, Mercado Pago u otros medios electrónicos, facilitando una experiencia de compra rápida, segura y autónoma.
+
+
+Además, esta capa se integrará con los canales digitales actuales de la empresa (Instagram, Facebook y WhatsApp Business), permitiendo que las redes sociales funcionen como canal de captación de clientes, mientras que la página web actúa como plataforma central de ventas. De esta manera, se busca evolucionar desde un modelo basado en mensajería manual hacia un sistema más automatizado, manteniendo al mismo tiempo la cercanía y confianza que caracteriza la atención del negocio.
+
+
+Capa de Presentación: Tienda en Línea
+Se desplegará un servidor web en Azure (Azure App Service) que alojará el sitio web corporativo y la tienda en línea de BabyViipcl. Los clientes podrán navegar por el catálogo de productos (ropa y accesorios para bebés), agregar productos al carrito, crear cuentas de usuario y realizar pagos en línea mediante integración con pasarelas de pago como Transbank Web, Mercado Pago y WebPay Plus.
+
+
+Capa de Lógica de Negocio: Backend y APIs
+La lógica de negocio será gestionada mediante un servidor de aplicaciones desplegado en una máquina virtual de Azure con sistema operativo Ubuntu Server 24.04 LTS, donde se ejecutará el backend desarrollado en Django (Python), utilizando contenedores Docker para facilitar la portabilidad y escalabilidad del sistema.
+* En esta capa se implementarán funcionalidades clave como:
+* Gestión automatizada de inventario en tiempo real
+* Procesamiento de órdenes de compra (online y presencial)
+* Integración de un sistema POS conectado al inventario
+* Gestión de clientes (CRM básico)
+* Automatización de notificaciones y comunicación con clientes
+Esta solución responde directamente al principal problema identificado en la empresa: la desactualización del stock y la necesidad de eliminar procesos manuales, como el registro de ventas en Excel.
+Capa de Datos: Base de Datos en la Nube
+La información del sistema será almacenada en una base de datos PostgreSQL desplegada en la nube, asegurando consistencia, disponibilidad y acceso en tiempo real a los datos del negocio.
+El uso de PostgreSQL permite:
+* Centralizar la información del inventario, ventas y clientes
+* Evitar duplicidad de datos
+* Reducir errores humanos
+* Mejorar la toma de decisiones basada en información actualizada.
+Esta capa es fundamental para resolver las brechas detectadas en la gestión manual del negocio, especialmente en la falta de sincronización entre stock real y registros digitales.
+Capa de Infraestructura: Cloud Computing en Azure
+La solución se desplegará sobre una máquina virtual en Microsoft Azure con sistema operativo Ubuntu Server 24.04 LTS, configurada para soportar contenedores Docker y servicios backend.
+El uso de Linux se justifica por:
+* Mayor eficiencia en el uso de recursos
+* Mejor compatibilidad con tecnologías de desarrollo modernas
+* Mayor estabilidad en entornos de producción
+
+
+Capa de Administración y Reportería
+Se implementará un panel de administración (dashboard) accesible vía web, que permitirá a los administradores de Babyviip:
+* Gestionar inventario en tiempo real
+* Visualizar reportes de ventas
+* Administrar productos, precios y stock
+* Gestionar clientes y pedidos
+* Exportar información contable
+Esta capa reemplazará completamente el uso de herramientas manuales como Excel y Word, mejorando significativamente la eficiencia operativa y reduciendo errores.
+
+
+De esta manera, la propuesta no solo incorpora tecnología, sino que responde directamente a los problemas identificados en la empresa, permitiendo la integración de sus procesos, la automatización de tareas críticas y la mejora de la experiencia del cliente.
+
+
+La implementación de esta arquitectura permitirá a Babyviip evolucionar hacia un modelo de negocio omnicanal, combinando su fortaleza en la atención presencial con herramientas digitales modernas, logrando así un sistema más eficiente, escalable y competitivo en el mercado actual.
+
+
+
+
+2.2 Arquitectura Cloud Computing, considerando los requerimientos y el tipo de servicio
+Configuración de la máquina virtual 
+	Sistema operativo
+	Ubuntu Server 24.04 LTS (x64, generación 2)
+	Tamaño
+	Standard E2s_v3 (2 vCPU, 8 GB de memoria) o Standard E2s_v3 (2 vCPU, 16 GB de memoria)
+	Región
+	(Canadá) Canada Central
+	Tipo de almacenamiento
+	Disco administrado (por defecto Azure)
+	Autenticación
+	Clave pública SSH
+	Usuario administrador
+	azureuser
+	Red
+	Red virtual de Azure (VNet) con acceso público
+	Disponibilidad
+	Zona de disponibilidad (Zona 1)
+	Seguridad
+	Máquinas virtuales de inicio seguro
+	Modelo de implementación
+	Máquinas virtuales de inicio seguro
+	Modelo de implementación
+	Infraestructura como Servicio (IaaS)
+	Nota:
+Los parámetros definidos en la configuración de la máquina virtual, tales como la región, el tamaño (CPU y memoria) y el nombre de la instancia, pueden variar en función de las pruebas realizadas, la disponibilidad de recursos en la plataforma Azure y los requerimientos específicos del proyecto. No obstante, la configuración presentada corresponde a la base estándar adoptada por el equipo de trabajo para el desarrollo e implementación de la solución.
+	
+
+Se optó por una máquina virtual con sistema operativo Linux (Ubuntu Server 24.04 LTS), debido a su alta compatibilidad con tecnologías de desarrollo backend como Docker y Django, además de su eficiencia en el uso de recursos. La elección del tamaño Standard E2s_v3 permite contar con mayor capacidad de memoria para la ejecución de contenedores y servicios asociados, asegurando un rendimiento estable del sistema.
+
+
+Ejecución provisoria y levantamiento del sistema en Azure
+Para validar la propuesta de Cloud Computing y asegurar el correcto funcionamiento del sistema desarrollado, se realizó una implementación provisoria en la plataforma Microsoft Azure, utilizando una máquina virtual con sistema operativo Ubuntu Server 24.04 LTS.
+1. Conexión remota a la máquina virtual
+En primer lugar, se estableció conexión mediante protocolo SSH desde un equipo local hacia la máquina virtual desplegada en Azure. Para ello, se utilizó una clave privada (.pem), lo que permite una autenticación segura sin uso de contraseña.
+
+
+Inicialmente se presentó un error de permisos debido a un usuario incorrecto (azureuser), el cual fue corregido utilizando el usuario adecuado configurado en la máquina (azureuserubuntu), logrando así el acceso exitoso al servidor.
+2. Clonación del repositorio del sistema
+Una vez dentro del entorno Linux, se procedió a clonar el repositorio del proyecto desde GitHub:
+git clone https://github.com/OutFerz/babyviip.git
+Posteriormente, se accedió a la carpeta del proyecto:
+cd babyviip
+Esto permitió disponer del código fuente del sistema en la máquina virtual.
+3. Configuración de variables de entorno
+Se creó el archivo .env, el cual contiene las variables necesarias para la conexión a la base de datos PostgreSQL, tales como nombre de base de datos, usuario, contraseña, host y puerto.
+nano .env
+Este archivo es fundamental para que el backend desarrollado en Django pueda conectarse correctamente a la base de datos dentro del entorno Docker.
+Levantamiento del sistema mediante Docker
+Para la ejecución del sistema se utilizó Docker Compose, lo que permitió levantar automáticamente los servicios necesarios, incluyendo:
+* Servidor backend (Django)
+* Base de datos PostgreSQL
+El comando utilizado fue:
+docker compose up -d
+Durante este proceso, Docker descargó las imágenes necesarias, construyó el contenedor del sistema y desplegó los servicios definidos en el archivo docker-compose.yml.
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+La imagen presentada evidencia el proceso de conexión remota a la máquina virtual, la clonación del repositorio del sistema y la configuración inicial del entorno. Asimismo, se observa el inicio del levantamiento del sistema mediante Docker Compose, junto con la descarga de las imágenes necesarias para la creación de los contenedores.
+
+
+
+
+
+
+
+
+
+
+Una vez ejecutado el comando de levantamiento del sistema, se inició el proceso de construcción de la imagen del backend y la descarga de las imágenes necesarias para la ejecución de los contenedores. En esta etapa, Docker se encarga de preparar el entorno de ejecución, instalando las dependencias del proyecto, copiando los archivos del sistema y configurando el script de inicio (entrypoint.sh).
+Posteriormente, se completó la construcción de la imagen del servicio web y se procedió a la creación de los contenedores correspondientes, junto con la red interna y el volumen de almacenamiento para la base de datos. Finalmente, los servicios fueron iniciados correctamente, quedando el sistema listo para su utilización dentro del entorno cloud.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+La imagen muestra la culminación del proceso de construcción y levantamiento de los contenedores del sistema. En ella se puede observar que la imagen del backend fue creada exitosamente, la base de datos PostgreSQL fue descargada y los servicios fueron iniciados, presentando estados Healthy y Started, lo que confirma el correcto funcionamiento del sistema en la máquina virtual de Azure.
+
+
+Una vez verificado el correcto funcionamiento de los contenedores y la ejecución del sistema dentro de la máquina virtual, se procedió a validar el acceso a la aplicación desde un navegador web. Para ello, se utilizó la dirección IP pública asignada por la plataforma Azure, junto con el puerto de ejecución del servicio (8000), permitiendo acceder al sistema desde cualquier dispositivo con conexión a internet.
+Esta etapa es fundamental, ya que permite comprobar que la aplicación no solo funciona a nivel interno en el servidor, sino que también es accesible de forma externa, validando así el correcto despliegue en un entorno cloud.  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+La imagen muestra el acceso exitoso a la aplicación Baby VIIP a través de un navegador web, utilizando la IP pública de la máquina virtual en Azure. En ella se observa la interfaz inicial del sistema, indicando que el servidor web se encuentra desplegado y en línea.
+Este resultado confirma que el sistema fue implementado correctamente, permitiendo su acceso desde cualquier dispositivo conectado a internet, cumpliendo así con los principios de disponibilidad y escalabilidad propios del Cloud Computing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.3 Reporte de cumplimiento Norma ISO27002 , BabyViip en Azure
+La norma ISO/IEC 27002:2022 establece controles de seguridad de la información organizados en cuatro categorías principales. A continuación se presenta el reporte de cumplimiento para la implementación cloud de BabyViipcl, evaluando el estado actual de cada control y las acciones recomendadas.
+Se adjuntan el documento realizado de los controles:  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Imagen de referencia de controles
+
+
+
+
+
+
+Se adjunta el documento de los reportes:  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Imagen de referencia de reportes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Taller
+• 2.1 Describa una propuesta de funcionamiento de un sistema Cloud Computing, para el caso de implementación en una empresa real.
+• 2.2 Seleccione el tipo de arquitectura Cloud Computing, considerando los requerimientos y el tipo de servicio; justifique su respuesta.
+• 2.3 Evidencie la ejecución de un aprovisionamiento, en la plataforma Azure que permita levantar un servidor, una BD y un Servidor Web con una página de Bienvenida.
+• 2.4 Entregue un reporte de cumplimiento en materias de seguridad de la información en base a los controles de la norma ISO27002 (En AAI).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. Conclusión
+La implementación de Cloud Computing para Baby VIIP no solo representa una propuesta teórica de transformación digital, sino que ha sido validada mediante una ejecución práctica en la plataforma Microsoft Azure. A través del despliegue de una máquina virtual con sistema operativo Ubuntu Server, el uso de contenedores Docker y la implementación de un backend en Django con base de datos PostgreSQL, se logró demostrar la viabilidad técnica de la solución en un entorno real.
+Esta transformación permite a la empresa superar sus limitaciones actuales, caracterizadas por la dependencia de herramientas manuales como Excel y Word, avanzando hacia una plataforma digital centralizada, accesible y escalable. Asimismo, el sistema implementado permite integrar procesos clave como la gestión de inventario, ventas y futura tienda en línea, facilitando la evolución hacia un modelo de negocio omnicanal.
+La arquitectura basada en infraestructura cloud (IaaS), combinada con tecnologías modernas de desarrollo, ofrece un equilibrio adecuado entre control, flexibilidad y costos, siendo especialmente pertinente para una PyME en proceso de crecimiento. Además, el uso de Docker permite una fácil replicabilidad del sistema en distintos entornos, mejorando la mantenibilidad y escalabilidad de la solución.
+Desde el punto de vista de seguridad, la plataforma Azure proporciona una base sólida alineada con estándares como ISO/IEC 27002; sin embargo, se identifican oportunidades de mejora en aspectos organizacionales, tales como la formalización de políticas de seguridad, capacitación del equipo y gestión de accesos.
+Finalmente, se propone una implementación progresiva en fases, donde inicialmente se consolida la infraestructura y el sistema base, posteriormente se integran funcionalidades de e-commerce y automatización de procesos, y finalmente se avanza hacia un nivel mayor de madurez digital, optimización de costos y fortalecimiento de la seguridad.
+De esta manera, Baby VIIP se posiciona en una etapa inicial de transformación digital efectiva, con una solución funcional desplegada en la nube, preparada para escalar y adaptarse a las exigencias del mercado actual.
+
+
+
+
+
+
+
+
+ Beneficios Esperados para BabyViipcl
+La implementación de la solución de Cloud Computing permitirá a Baby VIIP obtener una serie de beneficios concretos, directamente relacionados con las problemáticas identificadas en el proceso de diagnóstico y análisis de la empresa:
+* Optimización de costos operativos: Reducción aproximada de un 30%–40% en costos asociados a gestión manual, errores de inventario y reprocesos administrativos, en comparación con un modelo basado en infraestructura física y herramientas ofimáticas.
+* Disponibilidad continua del servicio (24/7): La implementación de una página web permitirá realizar ventas en línea sin restricción de horario, superando la limitación actual del local físico y la atención manual por redes sociales.
+* Mejora en la gestión del inventario: La integración de un sistema centralizado permitirá la actualización automática del stock en tiempo real, eliminando los descuadres generados por el uso de Excel y reduciendo errores humanos en la operación diaria.
+* Escalabilidad del negocio: La infraestructura en la nube permitirá soportar aumentos en la demanda (por ejemplo, campañas en redes sociales o fechas especiales) sin necesidad de intervención técnica compleja, facilitando el crecimiento del negocio.
+* Centralización y automatización de procesos: El uso de un sistema integrado reemplazará las planillas dispersas en Word y Excel, permitiendo gestionar ventas, clientes e inventario desde un único panel de administración.
+* Mejora en la experiencia del cliente: Los usuarios podrán acceder a información actualizada de productos (precios, tallas, disponibilidad), evitando la necesidad de consultas manuales y aumentando la confianza en la marca.
+* Seguridad de la información: La plataforma Azure proporciona mecanismos de seguridad como cifrado de datos, control de accesos y respaldo de información, alineándose con buenas prácticas y estándares como ISO/IEC 27002.
+* Base para cumplimiento normativo: La solución establece las condiciones necesarias para avanzar hacia el cumplimiento de normativas relacionadas con pagos electrónicos (PCI-DSS) y protección de datos personales, fortaleciendo la confiabilidad del negocio.
+
+
+
+
+
+
+
+
+
+
+4. Referencia Bibliográfica

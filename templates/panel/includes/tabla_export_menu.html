@@ -1,0 +1,10 @@
+{# Uso: tid = busquedas | ventas | ranking_vendidos | ranking_favoritos #}
+<div class="dropdown panel-tabla-export">
+    <button type="button" class="btn btn-sm panel-btn-ghost dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descargar tabla">Descargar</button>
+    <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+        <li><a class="dropdown-item" href="{% url 'panel_exportar_tabla' tabla=tid fmt='csv' %}">CSV</a></li>
+        <li><a class="dropdown-item" href="{% url 'panel_exportar_tabla' tabla=tid fmt='xlsx' %}">Excel (.xlsx)</a></li>
+        <li><a class="dropdown-item" href="{% url 'panel_exportar_tabla' tabla=tid fmt='pdf' %}">PDF</a></li>
+        <li><a class="dropdown-item" href="{% url 'panel_exportar_tabla' tabla=tid fmt='html' %}">HTML</a></li>
+    </ul>
+</div>

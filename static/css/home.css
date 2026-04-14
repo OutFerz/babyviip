@@ -1,0 +1,193 @@
+/*
+ * home.css — Estilos de la página de bienvenida (visitantes sin sesión).
+ * Se enlaza desde: templates/home.html → {% static 'css/home.css' %}
+ */
+
+body {
+    background-color: #e3f2fd;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-section {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem 20px;
+}
+
+.card-welcome {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
+    border: 3px dashed #f8bbd0;
+}
+
+.brand-name {
+    color: #ec407a;
+    font-weight: 800;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
+}
+
+.sub-brand {
+    color: #0277bd;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.status-badge {
+    background-color: #b3e5fc;
+    color: #01579b;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1.5rem;
+}
+
+.lead {
+    color: #546e7a;
+    font-size: 1.15rem;
+}
+
+.btn-baby-pink {
+    background-color: #ec407a;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-baby-pink:hover {
+    background-color: #d81b60;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-outline-baby-blue {
+    border: 2px solid #03a9f4;
+    color: #03a9f4;
+    font-weight: bold;
+}
+
+.btn-outline-baby-blue:hover {
+    background-color: #03a9f4;
+    color: #fff;
+}
+
+.btn-outline-baby-pink {
+    border: 2px solid #ec407a;
+    color: #ec407a;
+    font-weight: 600;
+}
+
+.btn-outline-baby-pink:hover {
+    background-color: #ec407a;
+    color: #fff;
+}
+
+/* Bloque visitante sin sesión + alineación futura con ERP (catálogo / inventario) */
+.visitors-note {
+    background: #f5f5f5;
+    border-radius: 16px;
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    border-left: 4px solid #03a9f4;
+}
+
+.visitors-note h2 {
+    font-size: 1.1rem;
+    color: #01579b;
+    margin-bottom: 0.75rem;
+}
+
+/* Contacto y redes */
+#contacto {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+#contacto h2 {
+    color: #ec407a;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.contact-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.contact-card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 1.25rem;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.contact-card h3 {
+    font-size: 1rem;
+    color: #0277bd;
+    margin-bottom: 0.75rem;
+}
+
+.contact-card a {
+    word-break: break-word;
+}
+
+.contact-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.map-embed {
+    width: 100%;
+    min-height: 220px;
+    border: 0;
+    border-radius: 12px;
+    margin-top: 0.5rem;
+}
+
+.referencias {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+    font-size: 0.75rem;
+    color: #78909c;
+    text-align: left;
+}
+
+.referencias h3 {
+    font-size: 0.85rem;
+    color: #546e7a;
+    margin-bottom: 0.5rem;
+}
+
+.referencias p {
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.site-footer {
+    margin-top: 2rem;
+    color: #90a4ae;
+    font-size: 0.85rem;
+    text-align: center;
+}

@@ -1,0 +1,111 @@
+{% extends "panel/base.html" %}
+{% block title %}Auditoría{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <div>
+            <h1 class="h3 mb-1">Auditoría del sistema</h1>
+            <p class="text-muted mb-0">
+                {% if is_admin_auditoria %}
+                    Puedes ver todos los movimientos (admins, empleados y otros roles).
+                {% else %}
+                    Puedes ver solo tus propias acciones.
+                {% endif %}
+            </p>
+        </div>
+        <div class="dropdown">
+            <button class="btn panel-btn-ghost dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Descargar
+            </button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="{% url 'panel_auditoria_exportar' fmt='csv' %}?q={{ filtros.q|urlencode }}&accion={{ filtros.accion|urlencode }}&modulo={{ filtros.modulo|urlencode }}&usuario={{ filtros.usuario|urlencode }}&desde={{ filtros.desde|urlencode }}&hasta={{ filtros.hasta|urlencode }}">CSV</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% url 'panel_auditoria_exportar' fmt='xlsx' %}?q={{ filtros.q|urlencode }}&accion={{ filtros.accion|urlencode }}&modulo={{ filtros.modulo|urlencode }}&usuario={{ filtros.usuario|urlencode }}&desde={{ filtros.desde|urlencode }}&hasta={{ filtros.hasta|urlencode }}">Excel (.xlsx)</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% url 'panel_auditoria_exportar' fmt='pdf' %}?q={{ filtros.q|urlencode }}&accion={{ filtros.accion|urlencode }}&modulo={{ filtros.modulo|urlencode }}&usuario={{ filtros.usuario|urlencode }}&desde={{ filtros.desde|urlencode }}&hasta={{ filtros.hasta|urlencode }}">PDF</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="{% url 'panel_auditoria_exportar' fmt='html' %}?q={{ filtros.q|urlencode }}&accion={{ filtros.accion|urlencode }}&modulo={{ filtros.modulo|urlencode }}&usuario={{ filtros.usuario|urlencode }}&desde={{ filtros.desde|urlencode }}&hasta={{ filtros.hasta|urlencode }}">HTML</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="panel-card p-3 p-md-4 mb-3">
+        <form method="get" class="row g-2 align-items-end">
+            <div class="col-12 col-lg-5">
+                <label class="form-label">Búsqueda</label>
+                <input class="form-control" type="search" name="q" value="{{ filtros.q }}" placeholder="usuario, acción, módulo, entidad, descripción…">
+            </div>
+            <div class="col-6 col-lg-2">
+                <label class="form-label">Acción</label>
+                <select class="form-select" name="accion">
+                    <option value="">Todas</option>
+                    {% for k, label in acciones %}
+                        <option value="{{ k }}" {% if filtros.accion == k %}selected{% endif %}>{{ label }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-6 col-lg-2">
+                <label class="form-label">Módulo</label>
+                <input class="form-control" name="modulo" value="{{ filtros.modulo }}" placeholder="catalogo, panel, sitio…">
+            </div>
+            <div class="col-6 col-lg-3">
+                <label class="form-label">Usuario</label>
+                <input class="form-control" name="usuario" value="{{ filtros.usuario }}" {% if not is_admin_auditoria %}disabled{% endif %} placeholder="{% if is_admin_auditoria %}username{% else %}solo admin{% endif %}">
+            </div>
+            <div class="col-6 col-lg-2">
+                <label class="form-label">Desde</label>
+                <input class="form-control" type="date" name="desde" value="{{ filtros.desde }}">
+            </div>
+            <div class="col-6 col-lg-2">
+                <label class="form-label">Hasta</label>
+                <input class="form-control" type="date" name="hasta" value="{{ filtros.hasta }}">
+            </div>
+            <div class="col-12 col-lg-8 d-flex gap-2">
+                <button class="btn btn-primary" type="submit">Filtrar</button>
+                <a class="btn btn-outline-secondary" href="{% url 'panel_auditoria' %}">Limpiar</a>
+                <span class="small text-muted align-self-center">Mostrando hasta {{ limit }} últimos resultados.</span>
+            </div>
+        </form>
+    </div>
+
+    <div class="table-responsive panel-card p-0">
+        <table class="table table-sm table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Usuario</th>
+                    <th>Rol</th>
+                    <th>Acción</th>
+                    <th>Módulo</th>
+                    <th>Entidad</th>
+                    <th>Detalle</th>
+                    <th>IP</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% if not auditorias %}
+                <tr><td colspan="8" class="text-center text-muted py-4">Sin registros para estos filtros.</td></tr>
+            {% else %}
+                {% for a in auditorias %}
+                    <tr>
+                        <td class="text-nowrap">{{ a.creado_en|date:"d/m/Y H:i" }}</td>
+                        <td class="text-nowrap">{% if a.usuario %}{{ a.usuario.username }}{% else %}—{% endif %}</td>
+                        <td class="text-nowrap text-muted">{{ a.rol|default:"" }}</td>
+                        <td class="text-nowrap"><span class="badge text-bg-secondary">{{ a.get_accion_display }}</span></td>
+                        <td class="text-nowrap">{{ a.modulo }}</td>
+                        <td class="text-nowrap">{{ a.entidad }}{% if a.entidad_id %} #{{ a.entidad_id }}{% endif %}</td>
+                        <td style="min-width: 280px;">{{ a.descripcion }}</td>
+                        <td class="text-nowrap text-muted">{{ a.ip|default:"" }}</td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+

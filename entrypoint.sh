@@ -1,4 +1,7 @@
 #!/bin/sh
+# En Windows, si este archivo queda con CRLF, al montar .:/app Docker usa la copia
+# del host y sh puede fallar en la siguiente línea con: set: Illegal option -
+# (guárdalo en LF o configura el editor / .gitattributes para *.sh).
 set -e
 
 echo "Esperando a Postgres en ${DATABASE_HOST:-db}..."

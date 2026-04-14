@@ -1,25 +1,30 @@
 """
 URL configuration for core project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/6.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 
-from .views import home
+from erp.auth_views import BabyviipLoginView, BabyviipLogoutView, registro
+from erp.catalog_api import busqueda_log, favorito_toggle
+
+from .views import catalogo, home, ventas_clientes
 
 urlpatterns = [
-    path('', home, name='home'),
-    path('admin/', admin.site.urls),
+    path("", home, name="home"),
+    path("catalogo/", catalogo, name="catalogo"),
+    path("api/catalogo/favorito/", favorito_toggle, name="catalogo_favorito_toggle"),
+    path("api/catalogo/busqueda/", busqueda_log, name="catalogo_busqueda_log"),
+    path("carrito/", include("erp.cart_urls")),
+    path("panel/", include("erp.panel_urls")),
+    path("mensajes/", include("erp.chat_urls")),
+    path("ventas/", ventas_clientes, name="ventas_clientes"),
+    path("accounts/login/", BabyviipLoginView.as_view(), name="login"),
+    path("accounts/logout/", BabyviipLogoutView.as_view(), name="logout"),
+    path("accounts/registro/", registro, name="registro"),
+    path("admin/", admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

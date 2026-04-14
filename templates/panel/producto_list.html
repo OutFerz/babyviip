@@ -1,0 +1,73 @@
+{% extends "panel/base.html" %}
+{% block title %}Productos{% endblock %}
+{% block content %}
+<div class="panel-page-header">
+    <span class="panel-badge-cloud">Inventario · vitrina web</span>
+    <h1>Productos</h1>
+    <p class="panel-page-lead">
+        Crear, editar o eliminar artículos; controlar visibilidad en el catálogo público con <strong>Publicado</strong>
+        (alinea el stock y precios con un único registro, en línea con la gestión centralizada que plantean los informes de transformación digital y arquitectura cloud).
+    </p>
+</div>
+
+{% if stats %}
+<div class="panel-stats" aria-label="Resumen de productos">
+    <div class="panel-stat-card">
+        <div class="panel-stat-card__value">{{ stats.total }}</div>
+        <div class="panel-stat-card__label">Total en sistema</div>
+    </div>
+    <div class="panel-stat-card">
+        <div class="panel-stat-card__value">{{ stats.publicados }}</div>
+        <div class="panel-stat-card__label">Visibles en catálogo</div>
+    </div>
+    <div class="panel-stat-card">
+        <div class="panel-stat-card__value">{{ stats.ocultos }}</div>
+        <div class="panel-stat-card__label">Ocultos</div>
+    </div>
+</div>
+{% endif %}
+
+<div class="panel-toolbar">
+    <a href="{% url 'panel_producto_nuevo' %}" class="btn panel-btn-primary">+ Nuevo producto</a>
+</div>
+
+<div class="table-responsive panel-card-table">
+    <table class="table panel-table table-hover align-middle mb-0">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Categoría</th>
+                <th>Publicado</th>
+                <th class="text-end">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for p in productos %}
+            <tr>
+                <td class="cell-name">{{ p.nombre }}</td>
+                <td>{{ p.categoria.nombre }}</td>
+                <td>
+                    {% if p.publicado %}
+                        <span class="badge text-bg-success">Sí</span>
+                    {% else %}
+                        <span class="badge text-bg-secondary">Oculto</span>
+                    {% endif %}
+                </td>
+                <td class="text-end text-nowrap">
+                    <a href="{% url 'panel_producto_editar' p.pk %}" class="btn btn-sm btn-outline-primary">Editar</a>
+                    <form action="{% url 'panel_producto_toggle_publicado' p.pk %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-outline-secondary" title="Mostrar u ocultar en catálogo">
+                            {% if p.publicado %}Ocultar{% else %}Publicar{% endif %}
+                        </button>
+                    </form>
+                    <a href="{% url 'panel_producto_eliminar' p.pk %}" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4" class="text-center text-muted py-5">No hay productos. Crea el primero con el botón de arriba.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

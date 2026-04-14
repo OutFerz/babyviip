@@ -1,0 +1,12 @@
+{# Uso: {% include "panel/includes/grafico_export_menu.html" with gid="kpis" canvas_id="panel-chart-kpis" file_base="babyviip_kpis" %} #}
+<div class="dropdown panel-grafico-export">
+    <button type="button" class="btn btn-sm panel-btn-ghost dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Descargar gráfico">Descargar</button>
+    <ul class="dropdown-menu dropdown-menu-end shadow-sm">
+        <li><a class="dropdown-item" href="{% url 'panel_exportar_grafico' grafico=gid fmt='csv' %}">CSV</a></li>
+        <li><a class="dropdown-item" href="{% url 'panel_exportar_grafico' grafico=gid fmt='xlsx' %}">Excel (.xlsx)</a></li>
+        <li><a class="dropdown-item" href="{% url 'panel_exportar_grafico' grafico=gid fmt='pdf' %}">PDF</a></li>
+        <li><a class="dropdown-item" href="{% url 'panel_exportar_grafico' grafico=gid fmt='html' %}">HTML</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><button type="button" class="dropdown-item" onclick="panelDownloadChartPng('{{ canvas_id }}','{{ file_base }}')">PNG (imagen)</button></li>
+    </ul>
+</div>

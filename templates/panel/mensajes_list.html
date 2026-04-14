@@ -1,0 +1,92 @@
+{% extends "panel/base.html" %}
+{% block title %}Mensajes{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+        <div>
+            <h1 class="h3 mb-1">Mensajes</h1>
+            <p class="text-muted mb-0">Bandeja de conversaciones cliente ↔ tienda, con trazabilidad.</p>
+        </div>
+    </div>
+
+    <div class="panel-card p-3 p-md-4 mb-3">
+        <form method="get" class="d-flex flex-wrap gap-2 align-items-center">
+            <input class="form-control" style="max-width: 520px;" type="search" name="q" value="{{ f.q }}" placeholder="Buscar por cliente, asunto o contenido…">
+            <button class="btn btn-primary" type="submit">Buscar</button>
+            <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#panel-filtros" aria-expanded="false">
+                Filtros
+            </button>
+            <a class="btn btn-outline-secondary" href="{% url 'panel_mensajes' %}">Limpiar</a>
+        </form>
+
+        <div class="collapse mt-3" id="panel-filtros">
+            <div class="row g-2">
+                <div class="col-md-3">
+                    <label class="form-label">Estado</label>
+                    <select class="form-select" name="estado" formmethod="get">
+                        <option value="">Todos</option>
+                        <option value="abierta" {% if f.estado == "abierta" %}selected{% endif %}>Abierta</option>
+                        <option value="cerrada" {% if f.estado == "cerrada" %}selected{% endif %}>Cerrada</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Lectura</label>
+                    <select class="form-select" name="unread">
+                        <option value="">Todas</option>
+                        <option value="1" {% if f.unread == "1" %}selected{% endif %}>No leídas</option>
+                    </select>
+                </div>
+                {% if is_admin %}
+                <div class="col-md-3">
+                    <label class="form-label">Asignación</label>
+                    <select class="form-select" name="asignacion">
+                        <option value="">Todas</option>
+                        <option value="mias" {% if f.asignacion == "mias" %}selected{% endif %}>Asignadas a mí</option>
+                        <option value="sin_asignar" {% if f.asignacion == "sin_asignar" %}selected{% endif %}>Sin asignar</option>
+                    </select>
+                </div>
+                {% endif %}
+            </div>
+            <div class="mt-2">
+                <button class="btn btn-sm btn-outline-primary" type="submit">Aplicar</button>
+            </div>
+        </div>
+    </div>
+
+    {% if not convs %}
+        <div class="alert alert-light border rounded-4">Sin conversaciones para esos filtros.</div>
+    {% else %}
+        <div class="list-group">
+            {% for c in convs %}
+                <a href="{% url 'panel_mensajes_detalle' pk=c.id %}"
+                   class="list-group-item list-group-item-action rounded-4 mb-2 border panel-chat-item
+                   {% if c.estado == 'cerrada' %}panel-chat-item--closed{% endif %}
+                   {% if c.unread_count %}panel-chat-item--unread{% endif %}">
+                    <div class="d-flex justify-content-between align-items-center gap-2">
+                        <div class="fw-semibold">
+                            {{ c.cliente.username }} — {% if c.asunto %}{{ c.asunto }}{% else %}Consulta{% endif %}
+                        </div>
+                        <div class="small text-muted">{{ c.actualizada_en|date:"d/m/Y H:i" }}</div>
+                    </div>
+                    <div class="d-flex flex-wrap gap-2 align-items-center mt-1">
+                        {% if c.estado == 'cerrada' %}
+                            <span class="badge text-bg-secondary">Cerrada</span>
+                        {% else %}
+                            <span class="badge text-bg-success">Abierta</span>
+                        {% endif %}
+                        {% if c.unread_count %}
+                            <span class="badge text-bg-warning">Nuevo ({{ c.unread_count }})</span>
+                        {% endif %}
+                        {% if c.administrador_asignado %}
+                            <span class="badge text-bg-light border">Asignada: {{ c.administrador_asignado.username }}</span>
+                        {% else %}
+                            <span class="badge text-bg-light border">Sin asignar</span>
+                        {% endif %}
+                        <span class="small text-muted">#{{ c.id }}</span>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
+

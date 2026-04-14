@@ -1,0 +1,31 @@
+/* auth_registro.css — templates/auth/registro.html */
+
+body {
+    background-color: #e3f2fd;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+.auth-wrap {
+    padding: 2rem 1rem 3rem;
+}
+
+.auth-title {
+    color: #ec407a;
+    font-weight: 800;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+}
+
+.auth-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 3px dashed #b3e5fc;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+.auth-card a {
+    color: #0277bd;
+    font-weight: 600;
+}

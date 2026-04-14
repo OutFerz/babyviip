@@ -1,0 +1,95 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo — Inventario Babyviip</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/site_nav.css' %}?v=20260414">
+    <link rel="stylesheet" href="{% static 'css/catalogo.css' %}?v=20260414">
+</head>
+<body>
+    <!-- Plantilla: templates/catalogo.html · Vista: core.views.catalogo · CSS: static/css/catalogo.css · JS: static/js/catalogo.js -->
+
+    {% include 'partials/site_nav.html' %}
+
+    <main class="container catalogo-main">
+        <h1 class="page-title">Catálogo (inventario ERP)</h1>
+        <p class="page-lead mb-3">
+            Datos en vivo desde las tablas <strong>Categoria</strong>, <strong>Producto</strong> y <strong>Variante</strong>.
+            Busca mientras escribes. Abre <strong>Filtrar por tipo</strong> para elegir categorías, favoritos (⭐) y disponibilidad;
+            con sesión iniciada, los favoritos y las búsquedas alimentan estadísticas del panel.
+            Las variantes sin stock muestran <em>Agotado</em> y, si existe, la fecha estimada de reposición.
+        </p>
+
+        {% if not categorias %}
+            <div class="empty-catalogo">
+                <p class="mb-0">Aún no hay categorías cargadas.
+                    {% if user.is_staff %}El equipo puede cargarlas desde <a href="{% url 'admin:index' %}">administración</a>.{% else %}Pide al equipo que ejecute la carga inicial (comando <code>seed_productos</code>).{% endif %}
+                </p>
+            </div>
+        {% else %}
+            <section class="catalogo-toolbar card border-0 shadow-sm mb-4" aria-label="Buscar y filtrar">
+                <div class="card-body">
+                    <div class="row g-3 align-items-end">
+                        <div class="col-lg-8 position-relative">
+                            <label for="catalogo-busqueda" class="form-label fw-semibold text-secondary small mb-1">Buscar</label>
+                            <input type="search" id="catalogo-busqueda" class="form-control form-control-lg catalogo-search-input"
+                                   placeholder="Nombre, material, SKU, talla, color…" autocomplete="off" spellcheck="false">
+                            <div id="catalogo-autocomplete" class="catalogo-autocomplete d-none" role="listbox" aria-label="Sugerencias"></div>
+                        </div>
+                        <div class="col-lg-4 d-flex justify-content-lg-end">
+                            <button type="button" class="btn btn-outline-primary btn-lg w-100 w-lg-auto" id="catalogo-filtro-toggle" aria-expanded="false" aria-controls="catalogo-filtro-panel">
+                                Filtrar por tipo y disponibilidad
+                            </button>
+                        </div>
+                    </div>
+                    <div id="catalogo-filtro-panel" class="catalogo-filtro-panel mt-3 d-none" role="region" aria-label="Filtros del catálogo">
+                        <p class="small fw-semibold text-secondary mb-2">Por tipo de producto (categorías)</p>
+                        <p class="small text-muted mb-2">Desmarca un tipo para ocultarlo del listado.</p>
+                        <div id="catalogo-filtro-categorias" class="row g-2 catalogo-filtro-grid"></div>
+                        <hr class="my-3">
+                        <p class="small fw-semibold text-secondary mb-2">Más filtros</p>
+                        <div class="row g-2 align-items-center catalogo-filtros-extra">
+                            <div class="col-12 col-sm-auto">
+                                <div class="form-check catalogo-fav-only mb-0">
+                                    <input class="form-check-input" type="checkbox" id="catalogo-solo-favoritos">
+                                    <label class="form-check-label" for="catalogo-solo-favoritos">Solo favoritos</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-auto">
+                                <div class="form-check mb-0">
+                                    <input class="form-check-input" type="checkbox" id="catalogo-solo-disponibles">
+                                    <label class="form-check-label" for="catalogo-solo-disponibles">Solo con stock</label>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-auto">
+                                <div class="form-check mb-0">
+                                    <input class="form-check-input" type="checkbox" id="catalogo-solo-agotados">
+                                    <label class="form-check-label" for="catalogo-solo-agotados">Solo agotados</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="catalogo-mount" class="catalogo-mount" data-products-per-page="6"></div>
+            <nav id="catalogo-paginacion-wrap" class="catalogo-paginacion-wrap d-none my-4" aria-label="Páginas del catálogo"></nav>
+            <p id="catalogo-sin-resultados" class="text-center text-muted py-4 d-none">No hay productos que coincidan con tu búsqueda o filtros.</p>
+
+            {{ catalogo_data|json_script:"catalogo-data" }}
+            {{ catalogo_config|json_script:"catalogo-config" }}
+        {% endif %}
+
+        <footer class="site-footer">
+            &copy; <span id="footer-year">2026</span> Babyviip · Catálogo conectado a PostgreSQL
+        </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {# cache-bust: evita servir JS viejo en docker/static #}
+    <script src="{% static 'js/catalogo.js' %}?v=20260414"></script>
+</body>
+</html>
