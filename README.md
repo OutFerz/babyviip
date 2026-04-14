@@ -4,6 +4,17 @@ Este proyecto utiliza Docker para levantar un entorno completo con Python y Post
 
 ---
 
+## Nota importante (Windows + Docker)
+
+Si trabajas en Windows, es común que `entrypoint.sh` quede con saltos de línea **CRLF**. Como el `docker-compose.yml` monta el proyecto con `.:/app`, el contenedor termina ejecutando el script del host y `sh` puede fallar con:
+
+- `/app/entrypoint.sh: 5: set: Illegal option -`
+
+Esto ocurre porque se interpreta como `set -e\r`. Para evitarlo:
+
+- Se agregó `.gitattributes` para forzar **LF** en `*.sh`.
+- El contenedor normaliza **CRLF → LF** antes de ejecutar `entrypoint.sh` cuando hay bind-mount.
+
 1. Acceso externo (Azure Networking)
 
    Ve al Portal de Azure.

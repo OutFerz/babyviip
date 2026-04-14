@@ -19,7 +19,12 @@ services:
     build:
       context: .
       dockerfile: dockerfile
-    command: sh /app/entrypoint.sh
+    # Si estás en Windows, este repo suele montarse con saltos de línea CRLF.
+    # Como hacemos bind-mount `.:/app`, el contenedor ejecuta el `entrypoint.sh`
+    # del host y `sh` puede fallar con:
+    #   /app/entrypoint.sh: 5: set: Illegal option -
+    # (en realidad es `set -e\r`). Esto normaliza CRLF -> LF antes de ejecutar.
+    command: sh -c "python -c \"from pathlib import Path; p=Path('/app/entrypoint.sh'); p.write_bytes(p.read_bytes().replace(b'\\r\\n', b'\\n'))\" && sh /app/entrypoint.sh"
     volumes:
       - .:/app
     ports:

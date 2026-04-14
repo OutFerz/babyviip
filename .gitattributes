@@ -1,0 +1,4 @@
+* text=auto
+
+# Mantén scripts en LF incluso en Windows.
+*.sh text eol=lf
