@@ -9,6 +9,36 @@
     color: #ec407a;
     font-weight: 800;
     font-size: 1.5rem;
+    line-height: 1;
+}
+
+.baby-header .brand-with-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    max-height: 44px;
+    overflow: hidden;
+}
+
+.baby-header .brand-logo {
+    width: 34px;
+    height: 34px;
+    max-width: 34px;
+    max-height: 34px;
+    flex: 0 0 auto;
+    display: block;
+    object-fit: contain;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+@media (min-width: 768px) {
+    .baby-header .brand-logo {
+        width: 40px;
+        height: 40px;
+        max-width: 40px;
+        max-height: 40px;
+    }
 }
 
 .site-tabs .nav-pills .nav-link {

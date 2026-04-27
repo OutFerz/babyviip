@@ -1,8 +1,12 @@
+{% load static %}
 {# Cabecera + pestañas. Estilos: static/css/site_nav.css · Solo staff ve /admin/ y pestaña Ventas #}
 <header class="baby-header">
     <div class="container py-2">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
-            <a href="{% url 'home' %}" class="navbar-brand mb-0 text-decoration-none">Babyviip</a>
+            <a href="{% url 'home' %}" class="navbar-brand mb-0 text-decoration-none brand-with-logo" aria-label="Ir al inicio">
+                <img class="brand-logo" src="{% static 'img/logo.png' %}" alt="Babyviip" loading="lazy" width="30" height="30">
+                <span>Babyviip</span>
+            </a>
             <div class="d-flex gap-2 flex-wrap justify-content-end align-items-center">
                 <a class="btn btn-sm btn-outline-baby-pink" href="{% url 'home' %}#contacto">Contacto y local</a>
                 {% if user.is_authenticated %}

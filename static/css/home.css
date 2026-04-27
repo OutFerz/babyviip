@@ -53,6 +53,14 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.home-logo {
+    width: min(240px, 65vw);
+    height: auto;
+    display: block;
+    margin: 0.5rem auto 0.75rem;
+    object-fit: contain;
+}
+
 .lead {
     color: #546e7a;
     font-size: 1.15rem;
