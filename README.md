@@ -1,6 +1,46 @@
 # 🚀 Proyecto Babyviip
 
-Este proyecto utiliza Docker para levantar un entorno completo con Python y PostgreSQL.
+Este proyecto utiliza Docker para levantar un entorno completo con Python y una base de datos relacional. **No se reemplazó PostgreSQL por MySQL en el repo**: conviven ambos y eliges con variables y `docker compose`.
+
+**Resumen rápido**
+
+| Qué quieres | Qué usar |
+|-------------|----------|
+| **Desarrollo habitual (por defecto)** | Solo `docker-compose.yml`. Sin `DATABASE_ENGINE=mysql` en `.env` (o `DATABASE_ENGINE=postgresql`). Comando típico: `docker compose up -d`. Usa el servicio **`db`** (PostgreSQL). |
+| **Evaluación que pide MySQL** | `.env` con **`DATABASE_ENGINE=mysql`** más el segundo archivo: `docker-compose.mysql.yml`. Comando típico: ver sección siguiente. Usa **`mysql_db`**. PostgreSQL **no hace falta** levantarlo en ese modo. |
+
+---
+
+## Base de datos: MySQL (solo para la evaluación)
+
+1. En tu `.env` (o combinando con lo que ya tienes):
+
+   ```env
+   DATABASE_ENGINE=mysql
+   MYSQL_HOST=mysql_db
+   MYSQL_PORT=3306
+   MYSQL_ROOT_PASSWORD=un_root_seguro_distinto
+   # DATABASE_NAME, DATABASE_USER, DATABASE_PASSWORD se reutilizan
+   ```
+
+   Puedes partir de **`.env.mysql.example`** en la raíz del proyecto.
+
+2. Levantar **solo MySQL + web** (PostgreSQL puede no arrancarse):
+
+   ```bash
+   docker compose -f docker-compose.yml -f docker-compose.mysql.yml up -d --build mysql_db web
+   ```
+
+3. Migraciones y usuario admin como siempre:
+
+   ```bash
+   docker compose exec web python manage.py migrate
+   docker compose exec web python manage.py createsuperuser
+   ```
+
+4. Volver a Postgres: pon `DATABASE_ENGINE=postgresql` (o bórrala), usa **`docker compose up -d`** sin el segundo archivo y opcionalmente baja los contenedores MySQL (`docker compose -f docker-compose.yml -f docker-compose.mysql.yml down`).
+
+_Notas rápidas: Django + ORM suele comportarse igual, pero cada motor tiene matices; para la evaluación lo habitual es **`migrate`** sobre una MySQL vacía. El arranque usa **`PyMySQL`** y `wait_for_db.py` espera según `DATABASE_ENGINE`._
 
 ---
 

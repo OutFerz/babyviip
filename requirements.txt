@@ -1,5 +1,6 @@
 django
 psycopg2-binary
+PyMySQL
 gunicorn
 python-dotenv
 Pillow
