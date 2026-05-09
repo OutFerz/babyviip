@@ -94,3 +94,9 @@ docker compose exec web python manage.py migrate
 docker compose exec web python manage.py seed_productos
 docker compose exec web python manage.py createsuperuser
 ```
+
+## Despliegue en la nube (AWS EC2, Docker + MySQL)
+
+Guía paso a paso (permisos Docker, `.env` con `DATABASE_ENGINE=mysql`, dos archivos `docker-compose`, puertos, Security Group, migraciones, errores típicos de PyMySQL y columna `publicado`):
+
+- **`Intrucciones_text/despliegue_ec2_docker_mysql.md`**

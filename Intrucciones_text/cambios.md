@@ -138,3 +138,14 @@
   - Requiere login y `perfil_cliente`.
   - Valida stock y crea `Venta` + `DetalleVenta`; descuenta stock al confirmar.
   - Limpia el carrito y registra evento en auditoría.
+
+---
+
+## Fecha: 8 de mayo de 2026
+
+### Documentación de despliegue (EC2 + Docker + MySQL)
+
+- **Objetivo:** Dejar registrados todos los pasos seguidos para publicar Babyviip en una instancia EC2 con MySQL en contenedor.
+- **Nuevo archivo:** `Intrucciones_text/despliegue_ec2_docker_mysql.md` (Docker/`newgrp`, Compose con `docker-compose.yml` + `docker-compose.mysql.yml`, `.env`, conflicto de puerto 3306 en el host, `cryptography` / `mysql_native_password`, migración `publicado` y carrera con `entrypoint`, Security Group y puerto 8000/8001, comandos de `migrate` / `createsuperuser` / `seed_productos`).
+- **Índice:** enlace desde `Intrucciones_text/md.md` en la sección **Despliegue en la nube (AWS EC2, Docker + MySQL)**.
+- **Código relacionado:** `erp/migrations/0002_producto_publicado.py` (evitar duplicar la columna si dos procesos migran a la vez), `requirements.txt` (**`cryptography`** para PyMySQL con MySQL 8).

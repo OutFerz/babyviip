@@ -1,6 +1,7 @@
 django
 psycopg2-binary
 PyMySQL
+cryptography
 gunicorn
 python-dotenv
 Pillow

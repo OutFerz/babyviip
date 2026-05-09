@@ -3,16 +3,72 @@
 from django.db import migrations, models
 
 
+def _column_exists(schema_editor, table: str, column: str) -> bool:
+    """Avoid duplicate ADD COLUMN if migrate races (e.g. entrypoint + manual exec)."""
+    conn = schema_editor.connection
+    with conn.cursor() as cursor:
+        if conn.vendor == "mysql":
+            cursor.execute(
+                """
+                SELECT COUNT(*) FROM information_schema.COLUMNS
+                WHERE TABLE_SCHEMA = DATABASE()
+                  AND TABLE_NAME = %s
+                  AND COLUMN_NAME = %s
+                """,
+                [table, column],
+            )
+            return cursor.fetchone()[0] > 0
+        if conn.vendor == "postgresql":
+            cursor.execute(
+                """
+                SELECT COUNT(*) FROM information_schema.columns
+                WHERE table_schema = current_schema()
+                  AND table_name = %s
+                  AND column_name = %s
+                """,
+                [table, column],
+            )
+            return cursor.fetchone()[0] > 0
+        if conn.vendor == "sqlite":
+            qtable = conn.ops.quote_name(table)
+            cursor.execute("PRAGMA table_info(%s)" % qtable)
+            return any(row[1] == column for row in cursor.fetchall())
+    raise NotImplementedError(f"Unsupported DB vendor: {conn.vendor}")
+
+
+def add_publicado_if_missing(apps, schema_editor):
+    Producto = apps.get_model("erp", "Producto")
+    table = Producto._meta.db_table
+    if _column_exists(schema_editor, table, "publicado"):
+        return
+    field = models.BooleanField(
+        default=True,
+        help_text="Si está desmarcado, el producto no aparece en la vitrina pública (oculto).",
+    )
+    field.set_attributes_from_name("publicado")
+    schema_editor.add_field(Producto, field)
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('erp', '0001_initial'),
+        ("erp", "0001_initial"),
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='producto',
-            name='publicado',
-            field=models.BooleanField(default=True, help_text='Si está desmarcado, el producto no aparece en la vitrina pública (oculto).'),
+        migrations.SeparateDatabaseAndState(
+            state_operations=[
+                migrations.AddField(
+                    model_name="producto",
+                    name="publicado",
+                    field=models.BooleanField(
+                        default=True,
+                        help_text="Si está desmarcado, el producto no aparece en la vitrina pública (oculto).",
+                    ),
+                ),
+            ],
+            database_operations=[
+                migrations.RunPython(add_publicado_if_missing, migrations.RunPython.noop),
+            ],
         ),
     ]
