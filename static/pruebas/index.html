@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babyviip — Prueba estática (home aislada)</title>
+    <!--
+      Carpeta autocontenida: solo index.html + pruebas.css + pruebas.js
+      (sin Bootstrap ni CSS/JS globales del repo).
+      Con servidor: http://localhost:8000/static/pruebas/index.html
+    -->
+    <link rel="stylesheet" href="pruebas.css">
+</head>
+<body class="pruebas-root">
+    <header class="pruebas-header">
+        <div class="pruebas-header-inner">
+            <a class="pruebas-brand" href="index.html">Babyviip</a>
+            <ul class="pruebas-nav">
+                <li><a class="is-active" href="index.html">Inicio (prueba)</a></li>
+                <li><a href="/catalogo/">Catálogo</a></li>
+                <li><a href="/carrito/">Carrito</a></li>
+                <li><a href="/accounts/login/">Ingresar</a></li>
+                <li><a href="/">Home Django</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="pruebas-banner">
+        <div class="pruebas-alert" role="status">
+            <strong>Página de prueba estática:</strong> este HTML y sus CSS/JS viven solo en
+            <code>static/pruebas/</code>. La home dinámica está en <a href="/">/</a>.
+        </div>
+    </div>
+
+    <main class="pruebas-main">
+        <div class="pruebas-card">
+            <div class="pruebas-badge">☁️ Tienda en evolución — presencia local + nube</div>
+
+            <!-- Logo SVG embebido: no depende de static/img/ -->
+            <svg class="pruebas-logo" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <defs>
+                    <linearGradient id="pruebas-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#b3e5fc"/>
+                        <stop offset="100%" style="stop-color:#fce4ec"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="60" cy="60" r="56" fill="url(#pruebas-grad)" stroke="#f8bbd0" stroke-width="3"/>
+                <text x="60" y="68" text-anchor="middle" font-size="22" font-weight="800" fill="#ec407a">Bv</text>
+            </svg>
+
+            <h1 class="pruebas-title">Babyviip</h1>
+            <div class="pruebas-subtitle">Pequeños detalles, grandes sonrisas.</div>
+
+            <p class="pruebas-lead">
+                Texto de bienvenida de ejemplo (en la app real viene de la configuración del sitio en base de datos).
+            </p>
+
+            <section class="pruebas-note" aria-labelledby="pruebas-explora">
+                <h2 class="pruebas-section-title" id="pruebas-explora">Explora el sistema</h2>
+                <p>
+                    Como visitante puedes recorrer las secciones que reflejan el modelo de datos del ERP.
+                </p>
+                <div class="pruebas-actions">
+                    <a class="pruebas-btn pruebas-btn--outline" href="/catalogo/">Catálogo (inventario)</a>
+                    <a class="pruebas-btn pruebas-btn--pink" href="/">Ir a home Django</a>
+                </div>
+            </section>
+
+            <hr class="pruebas-hr">
+
+            <p class="pruebas-muted">
+                Síguenos en Instagram y Facebook o escríbenos por WhatsApp. También te esperamos en nuestro local en San Miguel.
+            </p>
+
+            <div class="pruebas-actions">
+                <span class="pruebas-btn pruebas-btn--outline" style="opacity: 0.75; cursor: default;">Mapa — demo</span>
+                <span class="pruebas-btn pruebas-btn--pink" style="opacity: 0.75; cursor: default;">WhatsApp — demo</span>
+            </div>
+
+            <section id="contacto" class="pruebas-contact">
+                <h2>Contacto, redes y local</h2>
+                <p class="pruebas-contact-hint">Datos de ejemplo para maquetación; en producción los carga el sitio desde la base.</p>
+                <div class="pruebas-grid">
+                    <div class="pruebas-card-mini">
+                        <h3>Instagram</h3>
+                        <p>@babyviipcl</p>
+                    </div>
+                    <div class="pruebas-card-mini">
+                        <h3>Facebook</h3>
+                        <p>Grupo / página Babyviip</p>
+                    </div>
+                    <div class="pruebas-card-mini">
+                        <h3>Teléfono y correo</h3>
+                        <p>+56 9 2749 3733</p>
+                        <p><a href="mailto:babyviip8@gmail.com">babyviip8@gmail.com</a></p>
+                    </div>
+                    <div class="pruebas-card-mini">
+                        <h3>Dirección del local</h3>
+                        <p>Gran Avenida 5234, local 17, San Miguel</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pruebas-ref">
+                <p>Referencias de ejemplo para esta copia estática aislada.</p>
+            </section>
+
+            <footer class="pruebas-footer">
+                &copy; <span id="pruebas-footer-year">2026</span> Babyviip — Solo archivos en
+                <code>static/pruebas/</code>
+            </footer>
+        </div>
+    </main>
+
+    <script src="pruebas.js"></script>
+</body>
+</html>
