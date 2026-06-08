@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Babyviip — Ropa y accesorios para bebés (0 a 3 años)</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!--
+      Demo estática (pruebas): misma cabecera y menú que templates/partials/site_nav.html
+      Logo: copia en images/logo.png (mismo archivo que static/img/logo.png del proyecto)
+    -->
+    <header class="baby-header">
+        <div class="container py-2">
+            <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2">
+                <a href="index.html" class="navbar-brand mb-0 text-decoration-none brand-with-logo" aria-label="Ir al inicio">
+                    <img class="brand-logo" src="images/logo.png" alt="Babyviip" loading="lazy" width="30" height="30">
+                    <span>Babyviip</span>
+                </a>
+                <div class="d-flex gap-2 flex-wrap justify-content-end align-items-center">
+                    <a class="btn btn-sm btn-outline-baby-pink" href="#contacto">Contacto y local</a>
+                    <a class="btn btn-sm btn-outline-baby-blue" href="/accounts/login/">Iniciar sesión</a>
+                    <a class="btn btn-sm btn-outline-baby-pink" href="/accounts/registro/">Registro</a>
+                </div>
+            </div>
+            <nav class="site-tabs" aria-label="Secciones del sitio">
+                <ul class="nav nav-pills flex-wrap gap-1">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/catalogo/">Catálogo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/carrito/">
+                            Carrito
+                            <span id="nav-carrito-badge" class="badge rounded-pill text-bg-danger ms-1 d-none">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container hero-section">
+        <div class="card-welcome col-lg-10 mx-auto shadow-lg">
+            <div class="status-badge">☁️ LA GRAN Tienda de tus sueños, en evolución — presencia local + nube</div>
+
+            <img class="home-logo" src="images/logo.png" alt="Babyviip" loading="lazy" width="140" height="140">
+
+            <h1 class="brand-name">Babyviip</h1>
+            <div class="sub-brand">Pequeños detalles, grandes sonrisas.</div>
+
+            <p class="lead mb-4">
+                Ropa y accesorios para bebés de 0 a 3 años. Esta página es solo una maqueta estática del inicio:
+                el menú superior replica el del sitio real; el catálogo y el carrito enlazan a la app Django si la tienes corriendo.
+            </p>
+
+            <section class="visitors-note mb-4" aria-labelledby="visitantes-titulo">
+                <h2 id="visitantes-titulo">Explora el sistema</h2>
+                <p class="mb-3 text-secondary">
+                    Desde la app completa puedes recorrer el catálogo, el carrito y el panel según tu usuario.
+                </p>
+                <div class="d-flex flex-wrap gap-2 justify-content-center">
+                    <a class="btn btn-outline-baby-blue btn-lg" href="/catalogo/">Catálogo (inventario)</a>
+                    <a class="btn btn-baby-pink btn-lg" href="/carrito/">Carrito</a>
+                </div>
+            </section>
+
+            <section id="contacto" class="contact-section text-start">
+                <h2>Contacto, redes y local</h2>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <h3>Instagram</h3>
+                        <p class="mb-1"><a href="https://www.instagram.com/babyviipcl/" target="_blank" rel="noopener noreferrer">@babyviipcl</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>Correo</h3>
+                        <p class="mb-1"><a href="mailto:babyviip8@gmail.com">babyviip8@gmail.com</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <p class="site-footer mb-0 mt-4">Demo estática en <code>static/pruebas/static-website/</code> — no sustituye a <code>templates/home.html</code>.</p>
+        </div>
+    </main>
+</body>
+</html>
