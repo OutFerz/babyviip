@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ contacto.nombre_tienda }} — Ropa y accesorios para bebés (0 a 3 años)</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/site_nav.css' %}">
-    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'css/site_nav.css' %}?v=20260615">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?v=20260622">
 </head>
-<body>
+<body class="home-body">
     <!--
       Página: templates/home.html
       Estilos: static/css/site_nav.css, static/css/home.css
@@ -21,21 +21,24 @@
 
     <main class="container hero-section">
         <div class="card-welcome col-lg-10 mx-auto shadow-lg">
-            <div class="status-badge">☁️ Tienda en evolución — presencia local + nube</div>
+            <header class="home-hero">
+                <div class="status-badge">Tienda en evolución — presencia local + nube</div>
 
-            <img class="home-logo" src="{% static 'img/logo.png' %}" alt="Babyviip" loading="lazy" width="140" height="140">
+                <div class="home-logo-wrap">
+                    <img class="home-logo" src="{% static 'img/logo-babyviip-2026.png' %}" alt="Babyviip" loading="eager" width="300" height="300">
+                </div>
 
-            <h1 class="brand-name">{{ contacto.nombre_tienda }}</h1>
-            <div class="sub-brand">Pequeños detalles, grandes sonrisas.</div>
-
-            <p class="lead mb-4">{{ contacto.texto_bienvenida }}</p>
+                <h1 class="brand-name">{{ contacto.nombre_tienda }}</h1>
+                <p class="sub-brand">Pequeños detalles, grandes sonrisas.</p>
+                <p class="lead mb-0">{{ contacto.texto_bienvenida }}</p>
+            </header>
 
             <section class="visitors-note mb-4" aria-labelledby="visitantes-titulo">
                 <h2 id="visitantes-titulo">Explora el sistema</h2>
                 <p class="mb-3 text-secondary">
                     Como visitante puedes recorrer las secciones que reflejan el modelo de datos del ERP (mismas tablas que usa el equipo en el admin).
                 </p>
-                <div class="d-flex flex-wrap gap-2 justify-content-center">
+                <div class="d-flex flex-wrap gap-2 justify-content-center home-cta-row">
                     <a class="btn btn-outline-baby-blue btn-lg" href="{% url 'catalogo' %}">Catálogo (inventario)</a>
                     {% if user.is_authenticated %}
                         {% if user.is_staff or user.es_administrador_tienda %}
@@ -45,26 +48,50 @@
                 </div>
             </section>
 
-            <hr class="my-4" style="border-top: 2px solid #e0e0e0;">
+            <hr class="home-divider">
 
-            <p class="text-muted mb-4">
+            <p class="home-social-lead">
                 Síguenos en Instagram y Facebook o escríbenos por WhatsApp. También te esperamos en nuestro local en San Miguel.
             </p>
 
-            <div class="d-grid gap-2 d-md-flex flex-md-wrap justify-content-center mt-3 mb-2">
+            <nav class="home-social-icons" aria-label="Redes sociales">
+                {% if contacto.instagram_url %}
+                <a class="home-social-icon home-social-icon--instagram" href="{{ contacto.instagram_url }}" target="_blank" rel="noopener noreferrer" title="Instagram">
+                    <img src="{% static 'img/social/instagram.png' %}" alt="Instagram" width="52" height="52" loading="lazy">
+                </a>
+                {% endif %}
+                {% if contacto.whatsapp_url %}
+                <a class="home-social-icon home-social-icon--whatsapp" href="{{ contacto.whatsapp_url }}" target="_blank" rel="noopener noreferrer" title="WhatsApp">
+                    <img src="{% static 'img/social/whatsapp.png' %}?v=20260620" alt="WhatsApp" width="52" height="52" loading="lazy">
+                </a>
+                {% endif %}
+                {% if contacto.facebook_url %}
+                <a class="home-social-icon home-social-icon--facebook" href="{{ contacto.facebook_url }}" target="_blank" rel="noopener noreferrer" title="Facebook">
+                    <img src="{% static 'img/social/facebook.png' %}" alt="Facebook" width="52" height="52" loading="lazy">
+                </a>
+                {% endif %}
+            </nav>
+
+            <div class="d-grid gap-2 d-md-flex flex-md-wrap justify-content-center home-cta-row mb-2">
                 {% if contacto.mapa_url %}
                     <a class="btn btn-outline-baby-blue btn-lg px-4" href="{{ contacto.mapa_url }}" target="_blank" rel="noopener noreferrer">Cómo llegar (mapa)</a>
                 {% endif %}
                 {% if contacto.whatsapp_url %}
-                    <a class="btn btn-baby-pink btn-lg px-4" href="{{ contacto.whatsapp_url }}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+                    <a class="btn btn-baby-whatsapp btn-lg px-4 d-inline-flex align-items-center gap-2" href="{{ contacto.whatsapp_url }}" target="_blank" rel="noopener noreferrer">
+                        <img class="btn-social-icon" src="{% static 'img/social/whatsapp.png' %}?v=20260620" alt="" width="24" height="24" loading="lazy">
+                        WhatsApp
+                    </a>
                 {% endif %}
             </div>
 
             <section id="contacto" class="contact-section">
                 <h2>Contacto, redes y local</h2>
                 <div class="contact-grid">
-                    <div class="contact-card">
-                        <h3>Instagram</h3>
+                    <div class="contact-card contact-card--instagram">
+                        <h3>
+                            <img class="contact-card-icon" src="{% static 'img/social/instagram.png' %}" alt="" width="28" height="28" loading="lazy">
+                            Instagram
+                        </h3>
                         {% if contacto.instagram_url %}
                             <p class="mb-1"><a href="{{ contacto.instagram_url }}" target="_blank" rel="noopener noreferrer">{{ contacto.instagram_usuario }}</a></p>
                         {% else %}
@@ -76,8 +103,11 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="contact-card">
-                        <h3>Facebook</h3>
+                    <div class="contact-card contact-card--facebook">
+                        <h3>
+                            <img class="contact-card-icon" src="{% static 'img/social/facebook.png' %}" alt="" width="28" height="28" loading="lazy">
+                            Facebook
+                        </h3>
                         {% if contacto.facebook_url %}
                             <p class="mb-1"><a href="{{ contacto.facebook_url }}" target="_blank" rel="noopener noreferrer">{{ contacto.facebook_nombre }}</a></p>
                         {% else %}
@@ -89,8 +119,11 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div class="contact-card">
-                        <h3>Teléfono y correo</h3>
+                    <div class="contact-card contact-card--phone">
+                        <h3>
+                            <img class="contact-card-icon" src="{% static 'img/social/whatsapp.png' %}?v=20260620" alt="" width="28" height="28" loading="lazy">
+                            Teléfono y correo
+                        </h3>
                         <p class="mb-1">
                             {% if contacto.telefono_href %}
                                 <a href="tel:{{ contacto.telefono_href }}">{{ contacto.telefono }}</a>
@@ -104,12 +137,15 @@
                             {% endif %}
                         </p>
                     </div>
-                    <div class="contact-card">
-                        <h3>Dirección del local</h3>
+                    <div class="contact-card contact-card--location">
+                        <h3><span aria-hidden="true">📍</span> Dirección del local</h3>
                         <p class="mb-2">{{ contacto.direccion }}</p>
                         <div class="contact-actions">
                             {% if contacto.mapa_url %}
-                                <a class="btn btn-sm btn-baby-pink" href="{{ contacto.mapa_url }}" target="_blank" rel="noopener noreferrer">Ver ubicación en el mapa</a>
+                                <a class="btn btn-sm btn-maps-local d-inline-flex align-items-center gap-2" href="{{ contacto.mapa_url }}" target="_blank" rel="noopener noreferrer">
+                                    <img class="btn-maps-icon" src="{% static 'img/social/mapa-local.png' %}?v=20260621" alt="" width="32" height="32" loading="lazy">
+                                    Ver ubicación en el mapa
+                                </a>
                             {% endif %}
                         </div>
                     </div>

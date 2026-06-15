@@ -120,6 +120,67 @@ body {
     text-align: center;
 }
 
+/* Carrito: vista previa y resumen */
+.carrito-preview-img,
+.carrito-resumen-thumb {
+    max-width: 100%;
+    border-radius: 12px;
+    object-fit: contain;
+    background: #fafafa;
+}
+
+.carrito-preview-img {
+    max-height: 280px;
+}
+
+.carrito-resumen-thumb {
+    width: 72px;
+    height: 72px;
+    flex: 0 0 72px;
+}
+
+.carrito-resumen-thumb--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eceff1;
+    color: #90a4ae;
+    font-size: 0.7rem;
+    text-align: center;
+}
+
+.carrito-resumen-item {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed #e0e0e0;
+}
+
+.carrito-resumen-item:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+.checkout-lines .list-group-item {
+    padding-top: 0.85rem;
+    padding-bottom: 0.85rem;
+}
+
+.checkout-line-thumb {
+    width: 88px;
+    height: 88px;
+    flex: 0 0 88px;
+}
+
+.catalogo-card--focused {
+    outline: 3px solid #ec407a;
+    outline-offset: 4px;
+    border-radius: 16px;
+}
+
+.catalogo-variante--focused > td {
+    background: #fce4ec !important;
+    box-shadow: inset 0 0 0 2px #ec407a;
+}
+
 /* Barra de búsqueda, autocompletado y filtros (catalogo.js) */
 .catalogo-toolbar .card-body {
     background: linear-gradient(180deg, #fff 0%, #f5fbff 100%);

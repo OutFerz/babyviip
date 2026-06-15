@@ -263,7 +263,9 @@
                               esc(String(v.id)) +
                               '">Comprar ahora</button>';
                     return (
-                        "<tr><td>#" +
+                        '<tr data-variante-id="' +
+                        esc(String(v.id)) +
+                        '"><td>#' +
                         esc(String(v.id)) +
                         "</td><td><code>" +
                         esc(v.sku) +
@@ -402,10 +404,71 @@
         }
 
         var data = JSON.parse(dataEl.textContent);
+        var urlParams = new URLSearchParams(window.location.search);
+        var focusProductoId = urlParams.get("producto");
+        var focusVarianteId = urlParams.get("variante");
         var selectedCats = {};
         data.forEach(function (c) {
             selectedCats[String(c.id)] = true;
         });
+
+        function findProductInData(productoId) {
+            var pid = parseInt(productoId, 10);
+            if (!pid) {
+                return null;
+            }
+            var found = null;
+            data.forEach(function (cat) {
+                if (found) {
+                    return;
+                }
+                cat.productos.forEach(function (p) {
+                    if (!found && parseInt(p.id, 10) === pid) {
+                        found = { cat: cat, p: p };
+                    }
+                });
+            });
+            return found;
+        }
+
+        function pageForProductoId(productoId) {
+            var pid = String(productoId);
+            var flat = collectVisibleFlat();
+            var idx = -1;
+            var i;
+            for (i = 0; i < flat.length; i += 1) {
+                if (String(flat[i].p.id) === pid) {
+                    idx = i;
+                    break;
+                }
+            }
+            if (idx < 0) {
+                return 1;
+            }
+            return Math.floor(idx / pageSize) + 1;
+        }
+
+        function focusDeepLinkTarget() {
+            if (!focusProductoId || !mount) {
+                return;
+            }
+            var card = mount.querySelector(
+                '[data-producto-id="' + CSS.escape(String(focusProductoId)) + '"]'
+            );
+            if (card) {
+                card.classList.add("catalogo-card--focused");
+                card.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+            if (focusVarianteId) {
+                var row = mount.querySelector(
+                    'tr[data-variante-id="' + CSS.escape(String(focusVarianteId)) + '"]'
+                );
+                if (row) {
+                    row.classList.add("catalogo-variante--focused");
+                    row.scrollIntoView({ behavior: "smooth", block: "center" });
+                }
+            }
+        }
 
         function buildFiltroCheckboxes() {
             if (!filtroCats) {
@@ -622,6 +685,9 @@
                     });
                 });
             }
+            if (opts.deepLink) {
+                focusDeepLinkTarget();
+            }
         }
 
         var debounceTimer;
@@ -744,7 +810,35 @@
         }
 
         buildFiltroCheckboxes();
-        render();
+
+        var deepLinkReady = false;
+        if (focusProductoId) {
+            var deep = findProductInData(focusProductoId);
+            if (deep) {
+                selectedCats[String(deep.cat.id)] = true;
+                if (soloFav) {
+                    soloFav.checked = false;
+                }
+                if (soloDisp) {
+                    soloDisp.checked = false;
+                }
+                if (soloAgo) {
+                    soloAgo.checked = false;
+                }
+                if (input) {
+                    input.value = deep.p.nombre;
+                }
+                if (filtroCats) {
+                    filtroCats.querySelectorAll('input[type="checkbox"]').forEach(function (cb) {
+                        cb.checked = selectedCats[cb.getAttribute("data-cat-id")] !== false;
+                    });
+                }
+                currentPage = pageForProductoId(focusProductoId);
+                deepLinkReady = true;
+            }
+        }
+
+        render({ keepPage: deepLinkReady, deepLink: deepLinkReady });
     }
 
     document.addEventListener("DOMContentLoaded", initCatalogo);

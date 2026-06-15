@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito — Babyviip</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/site_nav.css' %}">
-    <link rel="stylesheet" href="{% static 'css/catalogo.css' %}">
+    <link rel="stylesheet" href="{% static 'css/site_nav.css' %}?v=20260615">
+    <link rel="stylesheet" href="{% static 'css/catalogo.css' %}?v=20260615">
 </head>
 <body>
     {% include 'partials/site_nav.html' %}
@@ -18,7 +18,14 @@
                 <h1 class="h3 mb-1">Carrito</h1>
                 <p class="text-muted mb-0">Revisa variantes, cantidades y total antes de finalizar compra.</p>
             </div>
-            <a class="btn btn-outline-secondary" href="{% url 'catalogo' %}">Seguir comprando</a>
+            <div class="d-flex flex-wrap gap-2">
+                {% if lines %}
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#carrito-resumen-modal">
+                    Ver resumen de compra
+                </button>
+                {% endif %}
+                <a class="btn btn-outline-secondary" href="{% url 'catalogo' %}">Seguir comprando</a>
+            </div>
         </div>
 
         {% if not lines %}
@@ -36,7 +43,7 @@
                             <th style="width: 130px;">Cantidad</th>
                             <th style="width: 140px;">Precio</th>
                             <th style="width: 140px;">Subtotal</th>
-                            <th style="width: 110px;"></th>
+                            <th style="width: 220px;"></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -68,12 +75,35 @@
                                 <td>${{ ln.precio_unitario }}</td>
                                 <td class="fw-semibold">${{ ln.subtotal }}</td>
                                 <td class="text-end">
-                                    <form method="post" action="{% url 'carrito_update' %}">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="variante_id" value="{{ ln.variante.id }}">
-                                        <input type="hidden" name="cantidad" value="0">
-                                        <button class="btn btn-sm btn-outline-danger" type="submit">Quitar</button>
-                                    </form>
+                                    <div class="d-flex flex-wrap gap-1 justify-content-end">
+                                        <button
+                                            type="button"
+                                            class="btn btn-sm btn-outline-info carrito-ver-btn"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#carrito-preview-modal"
+                                            data-nombre="{{ ln.variante.producto.nombre }}"
+                                            data-categoria="{{ ln.categoria }}"
+                                            data-material="{{ ln.material }}"
+                                            data-talla="{{ ln.variante.talla_etiqueta }}"
+                                            data-color="{{ ln.variante.color }}"
+                                            data-sku="{{ ln.variante.sku_unico }}"
+                                            data-cantidad="{{ ln.cantidad }}"
+                                            data-precio="{{ ln.precio_unitario }}"
+                                            data-subtotal="{{ ln.subtotal }}"
+                                            data-imagen="{{ ln.imagen_url }}"
+                                            data-catalogo-url="{% url 'catalogo' %}?producto={{ ln.producto_id }}&variante={{ ln.variante.id }}"
+                                        >Ver</button>
+                                        <a
+                                            class="btn btn-sm btn-outline-primary"
+                                            href="{% url 'catalogo' %}?producto={{ ln.producto_id }}&variante={{ ln.variante.id }}"
+                                        >Catálogo</a>
+                                        <form method="post" action="{% url 'carrito_update' %}" class="d-inline">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="variante_id" value="{{ ln.variante.id }}">
+                                            <input type="hidden" name="cantidad" value="0">
+                                            <button class="btn btn-sm btn-outline-danger" type="submit">Quitar</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         {% endfor %}
@@ -98,6 +128,120 @@
             </div>
         {% endif %}
     </main>
+
+    <div class="modal fade" id="carrito-preview-modal" tabindex="-1" aria-labelledby="carrito-preview-title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h2 class="modal-title h5" id="carrito-preview-title">Detalle del producto</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body pt-2">
+                    <div class="row g-3 align-items-start">
+                        <div class="col-md-5 text-center">
+                            <img id="carrito-preview-img" src="" alt="" class="carrito-preview-img d-none">
+                            <div id="carrito-preview-placeholder" class="producto-img-placeholder">Sin imagen</div>
+                        </div>
+                        <div class="col-md-7">
+                            <p class="text-muted small mb-1" id="carrito-preview-categoria"></p>
+                            <h3 class="h5 mb-2" id="carrito-preview-nombre"></h3>
+                            <p class="mb-2"><strong>Material:</strong> <span id="carrito-preview-material"></span></p>
+                            <ul class="list-unstyled small mb-3">
+                                <li><strong>Talla:</strong> <span id="carrito-preview-talla"></span></li>
+                                <li><strong>Color:</strong> <span id="carrito-preview-color"></span></li>
+                                <li><strong>SKU:</strong> <code id="carrito-preview-sku"></code></li>
+                                <li><strong>Cantidad en carrito:</strong> <span id="carrito-preview-cantidad"></span></li>
+                                <li><strong>Precio unitario:</strong> $<span id="carrito-preview-precio"></span></li>
+                                <li><strong>Subtotal línea:</strong> $<span id="carrito-preview-subtotal"></span></li>
+                            </ul>
+                            <a id="carrito-preview-catalogo" class="btn btn-outline-primary btn-sm" href="{% url 'catalogo' %}">Ver en catálogo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if lines %}
+    <div class="modal fade" id="carrito-resumen-modal" tabindex="-1" aria-labelledby="carrito-resumen-title" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content rounded-4">
+                <div class="modal-header border-0 pb-0">
+                    <h2 class="modal-title h5" id="carrito-resumen-title">Resumen de tu compra</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body pt-2">
+                    <div class="vstack gap-3">
+                        {% for ln in lines %}
+                        <article class="carrito-resumen-item d-flex gap-3 align-items-start">
+                            {% if ln.imagen_url %}
+                            <img src="{{ ln.imagen_url }}" alt="" class="carrito-resumen-thumb" loading="lazy">
+                            {% else %}
+                            <div class="carrito-resumen-thumb carrito-resumen-thumb--empty">Sin imagen</div>
+                            {% endif %}
+                            <div class="flex-grow-1">
+                                <div class="fw-semibold">{{ ln.variante.producto.nombre }}</div>
+                                <div class="small text-muted mb-1">
+                                    {{ ln.categoria }} · {{ ln.variante.talla_etiqueta }} · {{ ln.variante.color }}
+                                </div>
+                                <div class="small">
+                                    {{ ln.cantidad }} × ${{ ln.precio_unitario }} =
+                                    <strong>${{ ln.subtotal }}</strong>
+                                </div>
+                                <a class="btn btn-link btn-sm px-0" href="{% url 'catalogo' %}?producto={{ ln.producto_id }}&variante={{ ln.variante.id }}">
+                                    Ir al catálogo de este producto
+                                </a>
+                            </div>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <div class="me-auto fw-semibold">Total: ${{ total }}</div>
+                    <a class="btn btn-baby-pink" href="{% url 'checkout' %}">Finalizar compra</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    (function () {
+        var modal = document.getElementById("carrito-preview-modal");
+        if (!modal) return;
+        modal.addEventListener("show.bs.modal", function (event) {
+            var btn = event.relatedTarget;
+            if (!btn) return;
+            var nombre = btn.getAttribute("data-nombre") || "";
+            var imagen = btn.getAttribute("data-imagen") || "";
+            var catalogoBtn = document.getElementById("carrito-preview-catalogo");
+            if (catalogoBtn) {
+                catalogoBtn.href = btn.getAttribute("data-catalogo-url") || catalogoBtn.getAttribute("href");
+            }
+            document.getElementById("carrito-preview-title").textContent = nombre;
+            document.getElementById("carrito-preview-nombre").textContent = nombre;
+            document.getElementById("carrito-preview-categoria").textContent = btn.getAttribute("data-categoria") || "";
+            document.getElementById("carrito-preview-material").textContent = btn.getAttribute("data-material") || "";
+            document.getElementById("carrito-preview-talla").textContent = btn.getAttribute("data-talla") || "";
+            document.getElementById("carrito-preview-color").textContent = btn.getAttribute("data-color") || "";
+            document.getElementById("carrito-preview-sku").textContent = btn.getAttribute("data-sku") || "";
+            document.getElementById("carrito-preview-cantidad").textContent = btn.getAttribute("data-cantidad") || "";
+            document.getElementById("carrito-preview-precio").textContent = btn.getAttribute("data-precio") || "";
+            document.getElementById("carrito-preview-subtotal").textContent = btn.getAttribute("data-subtotal") || "";
+            var img = document.getElementById("carrito-preview-img");
+            var placeholder = document.getElementById("carrito-preview-placeholder");
+            if (imagen) {
+                img.src = imagen;
+                img.alt = nombre;
+                img.classList.remove("d-none");
+                placeholder.classList.add("d-none");
+            } else {
+                img.classList.add("d-none");
+                placeholder.classList.remove("d-none");
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
-

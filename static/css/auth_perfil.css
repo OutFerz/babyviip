@@ -1,0 +1,249 @@
+/* auth_perfil.css — Mi perfil (paleta logo Baby VIIP: rosa, celeste, amarillo, crema) */
+
+:root {
+    --perfil-pink: #f5409e;
+    --perfil-pink-dark: #ec407a;
+    --perfil-pink-soft: #f8bbd0;
+    --perfil-blue: #49b8f1;
+    --perfil-blue-deep: #0277bd;
+    --perfil-blue-soft: #b3e5fc;
+    --perfil-yellow: #f9c80e;
+    --perfil-cream: #fff8f0;
+    --perfil-white: #ffffff;
+    --perfil-text: #546e7a;
+}
+
+body.perfil-body {
+    background:
+        radial-gradient(circle at 12% 18%, rgba(245, 64, 158, 0.12) 0%, transparent 42%),
+        radial-gradient(circle at 88% 12%, rgba(73, 184, 241, 0.16) 0%, transparent 38%),
+        radial-gradient(circle at 70% 88%, rgba(249, 200, 14, 0.1) 0%, transparent 34%),
+        linear-gradient(165deg, #e8f4fc 0%, var(--perfil-cream) 48%, #fce4ec 100%);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.perfil-wrap {
+    padding: 1.5rem 1rem 3rem;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.perfil-hero {
+    text-align: center;
+    margin-bottom: 1.75rem;
+}
+
+.perfil-hero-logo {
+    width: 88px;
+    height: 88px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.85rem;
+    box-shadow: 0 10px 28px rgba(245, 64, 158, 0.18);
+    border: 3px solid var(--perfil-white);
+}
+
+.perfil-hero-title {
+    margin: 0 0 0.35rem;
+    font-size: clamp(1.75rem, 4vw, 2.35rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, var(--perfil-blue-deep) 0%, var(--perfil-pink) 55%, var(--perfil-yellow) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.perfil-hero-lead {
+    color: var(--perfil-text);
+    font-size: 0.98rem;
+    max-width: 34rem;
+    margin: 0 auto 0.9rem;
+}
+
+.perfil-user-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: linear-gradient(135deg, var(--perfil-blue-soft) 0%, #ffffff 100%);
+    color: var(--perfil-blue-deep);
+    border: 2px solid rgba(73, 184, 241, 0.35);
+    padding: 0.45rem 1rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.perfil-user-badge::before {
+    content: "★";
+    color: var(--perfil-yellow);
+    font-size: 0.85rem;
+}
+
+.perfil-card {
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 26px;
+    padding: 1.5rem;
+    border: 3px dashed var(--perfil-pink-soft);
+    box-shadow: 0 18px 40px rgba(2, 119, 189, 0.1);
+    backdrop-filter: blur(6px);
+}
+
+@media (min-width: 768px) {
+    .perfil-card {
+        padding: 2rem 2.25rem;
+    }
+}
+
+.perfil-section {
+    border-radius: 18px;
+    padding: 1.15rem 1.2rem 1.25rem;
+    margin-bottom: 1rem;
+    background: var(--perfil-white);
+    border: 1px solid rgba(73, 184, 241, 0.14);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.perfil-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.perfil-section--cuenta {
+    border-left: 5px solid var(--perfil-blue);
+}
+
+.perfil-section--cliente {
+    border-left: 5px solid var(--perfil-pink);
+}
+
+.perfil-section--password {
+    border-left: 5px solid var(--perfil-yellow);
+}
+
+.perfil-section-head {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-bottom: 1rem;
+}
+
+.perfil-section-icon {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex: 0 0 auto;
+}
+
+.perfil-section--cuenta .perfil-section-icon {
+    background: rgba(73, 184, 241, 0.18);
+    color: var(--perfil-blue-deep);
+}
+
+.perfil-section--cliente .perfil-section-icon {
+    background: rgba(245, 64, 158, 0.14);
+    color: var(--perfil-pink);
+}
+
+.perfil-section--password .perfil-section-icon {
+    background: rgba(249, 200, 14, 0.22);
+    color: #c79100;
+}
+
+.perfil-section-title {
+    margin: 0;
+    font-size: 1.02rem;
+    font-weight: 800;
+    color: #37474f;
+}
+
+.perfil-section-note {
+    margin: -0.35rem 0 0.9rem;
+    font-size: 0.86rem;
+    color: var(--perfil-text);
+    padding: 0.65rem 0.85rem;
+    background: linear-gradient(90deg, rgba(249, 200, 14, 0.12), rgba(245, 64, 158, 0.08));
+    border-radius: 12px;
+    border: 1px dashed rgba(245, 64, 158, 0.25);
+}
+
+.perfil-card .form-label {
+    font-weight: 600;
+    color: var(--perfil-blue-deep);
+    font-size: 0.88rem;
+}
+
+.perfil-card .form-control {
+    border: 2px solid rgba(73, 184, 241, 0.22);
+    border-radius: 12px;
+    padding: 0.62rem 0.85rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.perfil-card .form-control:focus {
+    border-color: var(--perfil-blue);
+    box-shadow: 0 0 0 0.2rem rgba(73, 184, 241, 0.2);
+}
+
+.perfil-card .form-text {
+    color: #78909c;
+}
+
+.perfil-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 2px dashed var(--perfil-pink-soft);
+}
+
+.perfil-actions .btn {
+    border-radius: 999px;
+    padding: 0.62rem 1.35rem;
+    font-weight: 700;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.perfil-actions .btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn-baby-blue {
+    background: linear-gradient(135deg, var(--perfil-blue) 0%, var(--perfil-blue-deep) 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 8px 20px rgba(73, 184, 241, 0.35);
+}
+
+.btn-baby-blue:hover {
+    background: linear-gradient(135deg, #3aa8e8 0%, #01579b 100%);
+    color: #fff;
+    box-shadow: 0 10px 22px rgba(2, 119, 189, 0.32);
+}
+
+.btn-outline-baby-pink {
+    border: 2px solid var(--perfil-pink);
+    color: var(--perfil-pink);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.btn-outline-baby-pink:hover {
+    background: linear-gradient(135deg, var(--perfil-pink) 0%, var(--perfil-pink-dark) 100%);
+    border-color: var(--perfil-pink);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(245, 64, 158, 0.28);
+}
+
+.perfil-card .alert-danger {
+    border: none;
+    border-radius: 14px;
+    background: #ffebee;
+    color: #c62828;
+    border-left: 4px solid var(--perfil-pink);
+}

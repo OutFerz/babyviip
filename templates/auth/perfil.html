@@ -1,0 +1,118 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil — Babyviip</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/site_nav.css' %}?v=20260615">
+    <link rel="stylesheet" href="{% static 'css/auth_perfil.css' %}?v=20260615">
+</head>
+<body class="perfil-body">
+    {% include 'partials/site_nav.html' %}
+
+    <main class="container perfil-wrap">
+        <header class="perfil-hero">
+            <img
+                class="perfil-hero-logo"
+                src="{% static 'img/logo-babyviip-2026.png' %}"
+                alt="Babyviip"
+                width="88"
+                height="88"
+                loading="eager"
+            >
+            <h1 class="perfil-hero-title">Mi perfil</h1>
+            <p class="perfil-hero-lead">
+                Actualiza tu cuenta y los datos de <strong>Cliente</strong> que usamos en compras y checkout.
+            </p>
+            <span class="perfil-user-badge">{{ user.get_username }}</span>
+        </header>
+
+        <div class="perfil-card">
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger mb-4">{{ form.non_field_errors }}</div>
+            {% endif %}
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+
+                <section class="perfil-section perfil-section--cuenta" aria-labelledby="perfil-cuenta-titulo">
+                    <div class="perfil-section-head">
+                        <span class="perfil-section-icon" aria-hidden="true">👤</span>
+                        <h2 class="perfil-section-title" id="perfil-cuenta-titulo">Cuenta de acceso</h2>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                            {{ form.username }}
+                            {% for err in form.username.errors %}<div class="text-danger small">{{ err }}</div>{% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                            {{ form.email }}
+                            {% for err in form.email.errors %}<div class="text-danger small">{{ err }}</div>{% endfor %}
+                        </div>
+                    </div>
+                </section>
+
+                <section class="perfil-section perfil-section--cliente" aria-labelledby="perfil-cliente-titulo">
+                    <div class="perfil-section-head">
+                        <span class="perfil-section-icon" aria-hidden="true">🛍️</span>
+                        <h2 class="perfil-section-title" id="perfil-cliente-titulo">Datos de cliente</h2>
+                    </div>
+                    {% if not cliente %}
+                    <p class="perfil-section-note">
+                        Aún no tienes ficha de cliente. Completa <strong>nombre</strong> y <strong>RUT</strong> para usarlas en el checkout.
+                    </p>
+                    {% endif %}
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.nombre.id_for_label }}">{{ form.nombre.label }}</label>
+                            {{ form.nombre }}
+                            {% for err in form.nombre.errors %}<div class="text-danger small">{{ err }}</div>{% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.rut.id_for_label }}">{{ form.rut.label }}</label>
+                            {{ form.rut }}
+                            {% for err in form.rut.errors %}<div class="text-danger small">{{ err }}</div>{% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.contacto.id_for_label }}">{{ form.contacto.label }}</label>
+                            {{ form.contacto }}
+                            {% for err in form.contacto.errors %}<div class="text-danger small">{{ err }}</div>{% endfor %}
+                        </div>
+                    </div>
+                </section>
+
+                <section class="perfil-section perfil-section--password" aria-labelledby="perfil-password-titulo">
+                    <div class="perfil-section-head">
+                        <span class="perfil-section-icon" aria-hidden="true">🔒</span>
+                        <h2 class="perfil-section-title" id="perfil-password-titulo">Cambiar contraseña</h2>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.nueva_password.id_for_label }}">{{ form.nueva_password.label }}</label>
+                            {{ form.nueva_password }}
+                            {% if form.nueva_password.help_text %}<div class="form-text">{{ form.nueva_password.help_text }}</div>{% endif %}
+                            {% for err in form.nueva_password.errors %}<div class="text-danger small">{{ err }}</div>{% endfor %}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="{{ form.confirmar_password.id_for_label }}">{{ form.confirmar_password.label }}</label>
+                            {{ form.confirmar_password }}
+                            {% for err in form.confirmar_password.errors %}<div class="text-danger small">{{ err }}</div>{% endfor %}
+                        </div>
+                    </div>
+                </section>
+
+                <div class="perfil-actions">
+                    <button type="submit" class="btn btn-baby-blue">Guardar cambios</button>
+                    <a class="btn btn-outline-baby-pink" href="{% url 'home' %}">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

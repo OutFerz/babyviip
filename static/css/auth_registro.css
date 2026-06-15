@@ -29,3 +29,26 @@ body {
     color: #0277bd;
     font-weight: 600;
 }
+
+.btn-baby-blue {
+    background-color: #03a9f4;
+    color: #fff;
+    border: none;
+    font-weight: 600;
+}
+
+.btn-baby-blue:hover {
+    background-color: #0288d1;
+    color: #fff;
+}
+
+.btn-outline-baby-pink {
+    border: 2px solid #ec407a;
+    color: #ec407a;
+    font-weight: 600;
+}
+
+.btn-outline-baby-pink:hover {
+    background-color: #ec407a;
+    color: #fff;
+}

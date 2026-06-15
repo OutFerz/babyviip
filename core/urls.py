@@ -6,7 +6,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
-from erp.auth_views import BabyviipLoginView, BabyviipLogoutView, registro
+from erp.auth_views import BabyviipLoginView, BabyviipLogoutView, editar_perfil, registro
 from erp.catalog_api import busqueda_log, favorito_toggle
 
 from .views import catalogo, home, ventas_clientes
@@ -23,6 +23,7 @@ urlpatterns = [
     path("accounts/login/", BabyviipLoginView.as_view(), name="login"),
     path("accounts/logout/", BabyviipLogoutView.as_view(), name="logout"),
     path("accounts/registro/", registro, name="registro"),
+    path("accounts/perfil/", editar_perfil, name="perfil_editar"),
     path("admin/", admin.site.urls),
 ]
 

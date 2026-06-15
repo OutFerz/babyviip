@@ -124,6 +124,21 @@
     color: var(--panel-accent) !important;
 }
 
+.panel-brand-with-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.panel-brand-logo {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+    background: rgba(255, 255, 255, 0.85);
+}
+
 .panel-nav .nav-link {
     color: var(--panel-blue) !important;
     font-weight: 600;
