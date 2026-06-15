@@ -1,11 +1,5 @@
 /* catalogo.css — Página Catálogo (Categoria, Producto, Variante). */
 
-body {
-    background-color: #e3f2fd;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-}
-
 .catalogo-main {
     padding: 1.5rem 0 3rem;
 }

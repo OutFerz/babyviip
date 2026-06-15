@@ -1,4 +1,28 @@
-/* site_nav.css — Pestañas y cabecera compartida (incluida desde varias plantillas). */
+/* site_nav.css — Pestañas, cabecera y fondo base del sitio público. */
+
+:root {
+    --baby-pink: #f5409e;
+    --baby-pink-dark: #ec407a;
+    --baby-pink-soft: #f8bbd0;
+    --baby-blue: #49b8f1;
+    --baby-blue-deep: #0277bd;
+    --baby-blue-soft: #b3e5fc;
+    --baby-yellow: #f9c80e;
+    --baby-cream: #fff8f0;
+}
+
+/* Fondo unificado (inicio, catálogo, carrito, ventas, checkout, etc.) */
+body.site-body {
+    background:
+        radial-gradient(circle at 10% 15%, rgba(245, 64, 158, 0.14) 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(73, 184, 241, 0.18) 0%, transparent 36%),
+        radial-gradient(circle at 75% 92%, rgba(249, 200, 14, 0.12) 0%, transparent 32%),
+        linear-gradient(165deg, #e8f4fc 0%, var(--baby-cream) 45%, #fce4ec 100%);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
 
 .baby-header {
     background: linear-gradient(135deg, #ffffff 0%, #e1f5fe 100%);

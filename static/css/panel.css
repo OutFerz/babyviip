@@ -18,7 +18,7 @@
 
 .panel-body {
     min-height: 100vh;
-    background: linear-gradient(165deg, var(--panel-bg) 0%, #f0f7ff 45%, #fce4ec22 100%);
+    /* Fondo unificado: site_nav.css → body.site-body */
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     color: #37474f;
 }
